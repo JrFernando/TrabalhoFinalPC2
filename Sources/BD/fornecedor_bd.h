@@ -7,7 +7,7 @@
  */
  
 #include "bd.h"
-//#include "" Importar arquivo com a struct Fornecedores
+#include "../MODELO/fornecedor.h" 
 
 /**
  * Esta função recebe um id, faz a busca no banco de dados

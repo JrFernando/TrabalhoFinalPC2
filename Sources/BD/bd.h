@@ -8,7 +8,7 @@
 
 #include <mysql/mysql.h>
 
-#include "../UTIL/mybool.h" //Para utilizar o tipo bool
+#include "../UTIL/my_bool.h" //Para utilizar o tipo bool
 
 #define HOST "localhost"
 #define USER "root"
