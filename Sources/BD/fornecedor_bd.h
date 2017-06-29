@@ -18,8 +18,26 @@ Fornecedor findFornecedor(int);
 /**
  * Esta função retorna um ponteiro para todos os 
  * fornecedores cadastrados no banco de dados.
+ *
  */
 Fornecedor* getAllFornecedores();
+
+/**
+ * Esta função retorna quantos fornecedores 
+ * estão cadastrados no banco de dados.
+ *
+ */
+int getQtdAllFornecedores();
+
+/**
+ * Esta função retorna um ponteiro para todos os 
+ * fornecedores cadastrados no banco de dados.
+ *
+ * tam - Ponteiro para uma variavel inteira. É usada para
+ *       retornar a quantidade de Fornecedores que contém o ponteiro
+ *       que é retornado pela função.
+ */
+Fornecedor* getAllFornecedores(int* tam);
 
 /**
  * Esta recebe um Fornecedor e faz sua inserção no 

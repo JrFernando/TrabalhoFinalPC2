@@ -18,8 +18,26 @@ Funcioario findFuncionario(int);
 /**
  * Esta função retorna um ponteiro para todos os 
  * funcionarios cadastrados no banco de dados.
+ *
  */
 Funcionario* getAllFuncionarios();
+
+/**
+ * Esta função retorna quantos funcionarios 
+ * estão cadastrados no banco de dados.
+ *
+ */
+int getQtdAllFuncionarios();
+
+/**
+ * Esta função retorna um ponteiro para todos os 
+ * funcionarios cadastrados no banco de dados.
+ *
+ * tam - Ponteiro para uma variavel inteira. É usada para
+ *       retornar a quantidade de Funcionarios que contém o ponteiro
+ * 		 que é retornado pela função.
+ */
+Funcionario* getAllFuncionarios(int* tam);
 
 /**
  * Esta recebe um Funcionario e faz sua inserção no 
