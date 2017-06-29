@@ -6,13 +6,17 @@
  * @date 29/06/2017
  */
  
+#include <stdlib.h>
+
 #include "bd.h"
 #include "../MODELO/empresa.h"
 
 /**
  * Esta função faz a busca as informações da empresa
  * no banco de dados.
- * 
+ *
+ *
+ * return - Retorna uma struct empresa. Caso não exista retorna NULL. 
  */
 Empresa findEmpresa();
 
