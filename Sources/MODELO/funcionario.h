@@ -7,13 +7,15 @@
  
  * @date 27/06/2017
 */
+
+#include "grupo.h"
  
 typedef struct {
 	int id;
 	char *nome;
  	//char *senha; //A principio não tem sentido utilizar
  	float salario;
- 	//Grupo grupo; Só será utlizado depois das implementações a respeito das permissões
+ 	Grupo grupo;
 }Funcionario;
 
 
