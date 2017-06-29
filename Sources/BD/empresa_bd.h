@@ -18,16 +18,16 @@
  *
  * return - Retorna uma struct empresa. Caso não exista retorna NULL. 
  */
-Empresa findEmpresa();
+Empresa find_empresa();
 
 /**
  * Esta recebe uma Empresa e faz sua inserção no 
  * banco de dados.
  */
-bool insertEmpresa(const Empresa);
+bool insert_empresa(const Empresa);
 
 /**
  * Esta recebe uma Empresa e atualiza os dados da
  * empresa no banco de dados. 
  */
-bool updateEmpresa(const Empresa);
+bool update_empresa(const Empresa);
