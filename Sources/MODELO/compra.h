@@ -12,6 +12,7 @@
 
 #include "caixa.h"
 #include "produto.h"
+#include "funcionario.h"
   
 typedef struct {
 	int id;
@@ -20,4 +21,5 @@ typedef struct {
  	int* quantidade; //Vetor de quantidade para cada produto
  	struct tm horario;
  	int total_produtos; //Para saber quantos produtos contém a compra
+ 	Funcionario vendedor; //Caso exista um vendedor adiciona-lo
 } Compra;
