@@ -3,15 +3,17 @@
  * da struct.
  *
  * @author Fernando Júnior Gomes da Silva <fernandojunior20110@gmail.com>
+  @author Lucas Baleeiro Dominato <lucasdominato2@gmail.com>
+ 
  * @date 27/06/2017
 */
- 
+
 #include <time.h>
 
 #include "caixa.h"
 #include "produto.h"
   
-struct {
+typedef struct {
 	int id;
  	Caixa caixa;
  	Produto* produto; //Vetor de produto

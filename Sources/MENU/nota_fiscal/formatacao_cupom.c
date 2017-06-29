@@ -1,26 +1,33 @@
+/**
+ * Este módulo define as funções que criaram a nota fiscal.
+ * @author Fernando Júnior Gomes da Silva <fernandojunior20110@gmail.com>
+  @author Lucas Baleeiro Dominato <lucasdominato2@gmail.com>
+ 
+ * @date 27/06/2017
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include "horario.h"
-#include "funcoes_inserir.h"
-
+#include "formatacao_cupom.h"
 
 /*
 -arquivo que contem as funcoes que vao formatar o cupom fiscal.
 */
 
-void formatacao_nota_fiscal1(char *nome,Empresa *empresa){
+void formatacao_nota_fiscal1(char *nome_arquivo,Empresa *empresa){
 	FILE *file_PTR;
 	
 	//abrindo um arquivo para escrita:
-	file_PTR=fopen(nome,"w");
+	file_PTR=fopen(nome_arquivo,"w");
 	if(!file_PTR){
 		printf("ERRO AO ABRIR ARQUIVO-FIM DO PROGRAMA");
 		exit(1);
 	}
 	
 	//gravando os dados no arquivo.
-	fprintf(file_PTR,"%s\n",empresa->nome_empresa);
-	fprintf(file_PTR,"CNPJ:%ld\n",empresa->cnpj);
+	fprintf(file_PTR,"%s\n",empresa->nome);
+	fprintf(file_PTR,"CNPJ:%s\n",empresa->cnpj);
 	fprintf(file_PTR,"%s\n",empresa->endereco);
 	fprintf(file_PTR,"----------------------------------------------------------------------\n");
 	fprintf(file_PTR,"DANFE NFC-e-Documento Auxiliar da Nota Fiscal de Consumidor eletronica\n");
@@ -34,11 +41,11 @@ void formatacao_nota_fiscal1(char *nome,Empresa *empresa){
 	fclose(file_PTR);
 }
 
-void formatacao_nota_fiscal2(char *nome,int codigo_produto,char *nome_produto,float quantidade,float preco_venda){
+void formatacao_nota_fiscal2(char *nome_arquivo,int codigo_produto,char *nome_produto,float quantidade,float preco_venda){
 	FILE *file_PTR;
 	
 	//abrindo o arquivo ja no final da linha pra cadastrados dos produtos:
-	file_PTR=fopen(nome,"a");
+	file_PTR=fopen(nome_arquivo,"a");
 	if(!file_PTR){
 		printf("\nERRO AO ABRIR ARQUIVO-FIM DO PROGRAMA");
 		exit(1);
@@ -52,10 +59,10 @@ void formatacao_nota_fiscal2(char *nome,int codigo_produto,char *nome_produto,fl
 	fclose(file_PTR);
 }
 
-void formatacao_nota_fiscal3(char *nome,float qtd_total,float valor_total,char *forma_de_pagamento,char *nome_cliente,char *nome_operador,int codigo_operador){
+void formatacao_nota_fiscal3(char *nome_arquivo,float qtd_total,float valor_total,char *forma_de_pagamento,char *nome_cliente,char *nome_operador,int codigo_operador){
 	FILE  *file_PTR;
 	
-	file_PTR=fopen(nome,"a");
+	file_PTR=fopen(nome_arquivo,"a");
 	if(!file_PTR){
 		printf("\nERRO AO ABRIR ARQUIVO-FIM DO PROGRAMA");
 		exit(1);
