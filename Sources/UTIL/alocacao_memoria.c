@@ -3,7 +3,7 @@
 void* alocar_memoria(int tam, size_t size){
 	void* vetor_ptr;
 
-	if ( !(vetor_ptrv = calloc(tam, size)) ){
+	if ( !(vetor_ptr = calloc(tam, size)) ){
 		printf("Não foi possível alocar memória, libere recurso para continuar...\n");
 		return NULL;
 	}

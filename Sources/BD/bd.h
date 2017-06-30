@@ -6,6 +6,7 @@
  * @date 23/06/2017
  */
 
+#include <stdio.h>
 #include <mysql/mysql.h>
 
 #include "../UTIL/my_bool.h" //Para utilizar o tipo bool

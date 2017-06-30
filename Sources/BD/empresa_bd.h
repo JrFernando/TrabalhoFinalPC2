@@ -18,7 +18,7 @@
  *
  * return - Retorna uma struct empresa. Caso não exista retorna NULL. 
  */
-Empresa find_empresa();
+Empresa* find_empresa();
 
 /**
  * Esta recebe uma Empresa e faz sua inserção no 
