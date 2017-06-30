@@ -13,28 +13,21 @@
  * Esta função recebe um id, faz a busca no banco de dados
  * pelo grupo correspondente e o retorna. 
  */
-Grupo find_grupo(int);
+Grupo* find_grupo(int);
 
 /**
  * Esta função retorna um ponteiro para todos os 
  * grupos cadastrados no banco de dados.
  *
  */
-Gupro* get_all_grupos();
+Grupo* get_all_grupos();
 
 /**
  * Esta função retorna quantos grupos 
  * estão cadastrados no banco de dados.
  *
+ * Retorno - Retorna quantidade de grupos registrados no grupo.
+ * 
+ * Erro - Se der erro retorna -1
  */
 int get_qtd_all_grupos();
-
-/**
- * Esta função retorna um ponteiro para todos os 
- * grupos cadastrados no banco de dados.
- *
- * tam - Ponteiro para uma variavel inteira. É usada para
- *       retornar a quantidade de grupos que contém o ponteiro
- *       que é retornado pela função.
- */
-Grupo* get_all_grupos(int* tam);

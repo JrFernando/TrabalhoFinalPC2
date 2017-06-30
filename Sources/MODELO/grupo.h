@@ -6,7 +6,7 @@
  * @date 29/06/2017
 */
   
-struct {
+typedef struct {
  	int id;
  	char* nome;
  	char* descricao;

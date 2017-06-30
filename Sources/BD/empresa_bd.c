@@ -48,7 +48,7 @@ Empresa* find_empresa(){
 		return NULL;
 	}
 
-	//mysql_free_result(resposta);
+	mysql_free_result(resposta);
 	bd_close(&mysql);
 
 	return empresa;
