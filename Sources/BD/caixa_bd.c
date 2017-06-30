@@ -30,7 +30,7 @@ Caixa* find_caixa(int id){
 
 	if(mysql_query(&mysql, query)){
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return NULL;
 	}
@@ -45,7 +45,7 @@ Caixa* find_caixa(int id){
 		caixa->saldo = atof(linhas[1]);
 	} else {
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return NULL;
 	}
@@ -73,7 +73,7 @@ float get_saldo_caixa(Caixa caixa){
 
 	if(mysql_query(&mysql, query)){
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return -1;
 	}
@@ -84,7 +84,7 @@ float get_saldo_caixa(Caixa caixa){
 		saldo = atof(linhas[1]);
 	} else {
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return -1;
 	}
@@ -106,7 +106,7 @@ bool atualiza_saldo_caixa(Caixa caixa, float valor_compra){
 
 	if( (saldo_atual = get_saldo_caixa(caixa)) == -1){
 		//Descomente para debugar
-		printf("Erro ao obter saldo atual!\n");
+		//printf("Erro ao obter saldo atual!\n");
 		return FALSE;
 	}
 
@@ -119,7 +119,7 @@ bool atualiza_saldo_caixa(Caixa caixa, float valor_compra){
 		return TRUE;
 	} else{
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return FALSE;
 	}
@@ -136,7 +136,7 @@ bool movimentar_saldo_caixa(Caixa caixa, float valor_baixa){
 
 	if( (saldo_atual = get_saldo_caixa(caixa)) == -1){
 		//Descomente para debugar
-		printf("Erro ao obter saldo atual!\n");
+		//printf("Erro ao obter saldo atual!\n");
 		return FALSE;
 	}
 
@@ -149,7 +149,7 @@ bool movimentar_saldo_caixa(Caixa caixa, float valor_baixa){
 		return TRUE;
 	} else{
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return FALSE;
 	}
