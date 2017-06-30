@@ -7,8 +7,7 @@
  
  * @date 27/06/2017
 */
-
-#include "grupo.h"
+#include "../BD/grupo_bd.h"
  
 typedef struct {
 	int id;

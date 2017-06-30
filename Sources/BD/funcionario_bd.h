@@ -13,43 +13,36 @@
  * Esta função recebe um id, faz a busca no banco de dados
  * pelo funcionario correspondente e o retorna. 
  */
-Funcioario findFuncionario(int);
+Funcionario* find_funcionario(int);
 
 /**
  * Esta função retorna um ponteiro para todos os 
  * funcionarios cadastrados no banco de dados.
  *
  */
-Funcionario* getAllFuncionarios();
+Funcionario* get_all_funcionarios();
 
 /**
  * Esta função retorna quantos funcionarios 
  * estão cadastrados no banco de dados.
  *
- */
-int getQtdAllFuncionarios();
-
-/**
- * Esta função retorna um ponteiro para todos os 
- * funcionarios cadastrados no banco de dados.
+ * Retorno - retorna a quantidade de registros no banco.
  *
- * tam - Ponteiro para uma variavel inteira. É usada para
- *       retornar a quantidade de Funcionarios que contém o ponteiro
- * 		 que é retornado pela função.
+ * Erro - retorna -1 em caso de erro.
  */
-Funcionario* getAllFuncionarios(int* tam);
+int get_qtd_all_funcionarios();
 
 /**
  * Esta recebe um Funcionario e faz sua inserção no 
  * banco de dados.
  */
-bool insertFuncionario(const Funcionario);
+bool insert_funcionario(const Funcionario);
  
 /**
  * Esta recebe um Funcionario e atualiza os dados do 
  * funcionario com o respectivo id no banco de dados. 
  */
-bool updateFuncionario(const Funcionario);
+bool update_funcionario(const Funcionario);
 
 /**
  * Esta recebe um Funcionario e o deleta do banco de
@@ -57,4 +50,4 @@ bool updateFuncionario(const Funcionario);
  * para a exlusão, foi mantido a struct para seguir o padrão 
  * das funções anteriores. 
  */
-bool deleteFuncionario(const Funcionario);
+bool delete_funcionario(const Funcionario);
