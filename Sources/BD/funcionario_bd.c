@@ -31,7 +31,7 @@ Funcionario* find_funcionario(int id){
 
 	if(mysql_query(&mysql, query)){
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return NULL;
 	}
@@ -54,7 +54,7 @@ Funcionario* find_funcionario(int id){
 
 	} else {
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return NULL;
 	}
@@ -78,7 +78,7 @@ Funcionario* get_all_funcionarios(){
 
 	if(mysql_query(&mysql, query)){
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return NULL;
 	}
@@ -106,7 +106,7 @@ Funcionario* get_all_funcionarios(){
 	
 	} else {
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return NULL;
 	}
@@ -127,7 +127,7 @@ int get_qtd_all_funcionarios(){
 
 	if(mysql_query(&mysql, query)){
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return -1;
 	}
@@ -158,7 +158,7 @@ bool insert_funcionario(const Funcionario funcionario){
 		return TRUE;
 	} else{
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return FALSE;
 	}
@@ -182,7 +182,7 @@ bool update_funcionario(const Funcionario funcionario){
 		return TRUE;
 	} else{
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return FALSE;
 	}
@@ -205,7 +205,7 @@ bool delete_funcionario(const Funcionario funcionario){
 		return TRUE;
 	} else{
 		//Descomente para debugar
-		printf("Erro: %s\n", mysql_error(&mysql));
+		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return FALSE;
 	}
