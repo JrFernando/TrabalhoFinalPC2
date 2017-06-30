@@ -15,43 +15,55 @@
  *
  * id - identificador do caixa que deseja buscar
  */
-Caixa findCaixa(int id);
+Caixa* find_caixa(int id);
+
+/**
+ * Esta função retorna o valor atual do caixa
+ *
+ * caixa - caixa que deseja saber o saldo
+ *
+ * Retorno - Saldo do caixa.
+ *
+ * Erro - Retorna -1;
+ */
+float get_saldo_caixa(Caixa caixa);
+
+/**
+ * Esta função atualiza o saldo do caixa
+ *
+ * id - identificador do caixa que deseja atualizar o saldo
+ * valor_compra - valor da compra para atualizar o caixa
+ */
+bool atualiza_saldo_caixa(Caixa caixa, float valor_compra);
+
+/**
+ * Esta função faz uma baixa no caixa
+ *
+ * id - identificador do caixa que deseja dar baixa
+ * valor_baixa - valor que deseja retirar do caixa
+ */
+bool movimentar_saldo_caixa(Caixa caixa, float valor_baixa);
 
 /**
  * Esta função retorna um ponteiro para todos os 
  * caixas cadastrados no banco de dados.
  *
  */
-Caixa* getAllCaixas();
+//Caixa* getAllCaixas(); Não utilzar no momento
 
 /**
  * Esta função retorna quantos caixas 
  * estão cadastrados no banco de dados.
  *
  */
-int getQtdAllCaixas();
-
-/**
- * Esta função retorna um ponteiro para todos os 
- * caixas cadastrados no banco de dados.
- *
- * tam - Ponteiro para uma variavel inteira. É usada para
- *       retornar a quantidade de Caixas que contém o ponteiro
- *       que é retornado pela função.
- */
-Caixa* getAllCaixas(int* tam);
+//int getQtdAllCaixas(); Não utilizar no momento.
 
 /**
  * Esta recebe um Caixa e faz sua inserção no 
  * banco de dados.
  */
-bool insertCaixa(const Caixa);
+//bool insertCaixa(const Caixa); Não utilizar no momento, terá apenas um caixa
  
-/**
- * Esta recebe um Caixa e atualiza os dados do 
- * produto com o respectivo id no banco de dados. 
- */
-bool updateCaixa(const Caixa);
 
 /**
  * Esta recebe um Caixa e o deleta do banco de
@@ -59,4 +71,4 @@ bool updateCaixa(const Caixa);
  * para a exlusão, foi mantido a struct para seguir o padrão 
  * das funções anteriores. 
  */
-bool deleteCaixa(const Caixa);
+//bool deleteCaixa(const Caixa); Não utilizar no momento, terá penas um caixa
