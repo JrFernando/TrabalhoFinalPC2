@@ -19,7 +19,7 @@ Caixa* find_caixa(int id){
 	MYSQL_ROW linhas;
 	char *query = "select * from Caixas where caix_id =  ;";
 	Caixa* caixa;
-	int tamanho = 0, id_grupo;
+	int tamanho = 0;
 	
 	tamanho = strlen(query) + TAM_MAX_ID;	
 	query = (char*) alocar_memoria(tamanho, sizeof(char));
