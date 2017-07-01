@@ -5,6 +5,7 @@
                    displayName="Arquivos de Cabeçalho"
                    projectFiles="true">
       <logicalFolder name="BD" displayName="BD" projectFiles="true">
+        <itemPath>Sources/BD/acoes_funcionario_bd.h</itemPath>
         <itemPath>Sources/BD/bd.h</itemPath>
         <itemPath>Sources/BD/caixa_bd.h</itemPath>
         <itemPath>Sources/BD/compra_bd.h</itemPath>
@@ -26,6 +27,7 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="MODELO" displayName="MODELO" projectFiles="true">
+        <itemPath>Sources/MODELO/acoes_funcionario.h</itemPath>
         <itemPath>Sources/MODELO/caixa.h</itemPath>
         <itemPath>Sources/MODELO/compra.h</itemPath>
         <itemPath>Sources/MODELO/empresa.h</itemPath>
@@ -138,6 +140,8 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="Sources/BD/acoes_funcionario_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Sources/BD/bd.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Sources/BD/bd.h" ex="false" tool="3" flavor2="0">
@@ -195,6 +199,8 @@
             flavor2="0">
       </item>
       <item path="Sources/MENU/menu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/acoes_funcionario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/MODELO/caixa.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -281,6 +287,8 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="Sources/BD/acoes_funcionario_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Sources/BD/bd.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Sources/BD/bd.h" ex="false" tool="3" flavor2="0">
@@ -338,6 +346,8 @@
             flavor2="0">
       </item>
       <item path="Sources/MENU/menu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/acoes_funcionario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/MODELO/caixa.h" ex="false" tool="3" flavor2="0">
       </item>

@@ -1,14 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include "../BD/produto_bd.h"
-#include "../BD/funcionario_bd.h"
+
 #include "cupom_fiscal/horario_cupom.h"
 #include "../UTIL/alocacao_memoria.h"
-#include "../BD/turno_bd.h"
 #include "../BD/empresa_bd.h"
-#include "../BD/compra_bd.h"
-#include "../BD/movimentacao_bd.h"
-#include "../BD/caixa_bd.h"
+#include "../BD/acoes_funcionario_bd.h"
 #include "cupom_fiscal/formatacao_cupom.h"
 /*
 -programa que fornece o menu_principal do programa,indicando ao usuario o que ele pode fazer no programa:
