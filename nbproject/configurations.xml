@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Arquivos de Cabeçalho"
+                   projectFiles="true">
+      <logicalFolder name="BD" displayName="BD" projectFiles="true">
+        <itemPath>Sources/BD/bd.h</itemPath>
+        <itemPath>Sources/BD/caixa_bd.h</itemPath>
+        <itemPath>Sources/BD/compra_bd.h</itemPath>
+        <itemPath>Sources/BD/empresa_bd.h</itemPath>
+        <itemPath>Sources/BD/fabricante_bd.h</itemPath>
+        <itemPath>Sources/BD/funcionario_bd.h</itemPath>
+        <itemPath>Sources/BD/grupo_bd.h</itemPath>
+        <itemPath>Sources/BD/movimentacao_bd.h</itemPath>
+        <itemPath>Sources/BD/produto_bd.h</itemPath>
+        <itemPath>Sources/BD/reposicao_bd.h</itemPath>
+        <itemPath>Sources/BD/turno_bd.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="MENU" displayName="MENU" projectFiles="true">
+        <logicalFolder name="cupom_fiscal"
+                       displayName="cupom_fiscal"
+                       projectFiles="true">
+          <itemPath>Sources/MENU/cupom_fiscal/formatacao_cupom.h</itemPath>
+          <itemPath>Sources/MENU/cupom_fiscal/horario_cupom.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="MODELO" displayName="MODELO" projectFiles="true">
+        <itemPath>Sources/MODELO/caixa.h</itemPath>
+        <itemPath>Sources/MODELO/compra.h</itemPath>
+        <itemPath>Sources/MODELO/empresa.h</itemPath>
+        <itemPath>Sources/MODELO/fabricante.h</itemPath>
+        <itemPath>Sources/MODELO/funcionario.h</itemPath>
+        <itemPath>Sources/MODELO/grupo.h</itemPath>
+        <itemPath>Sources/MODELO/movimentacao.h</itemPath>
+        <itemPath>Sources/MODELO/produto.h</itemPath>
+        <itemPath>Sources/MODELO/reposicao.h</itemPath>
+        <itemPath>Sources/MODELO/turno.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="UTIL" displayName="UTIL" projectFiles="true">
+        <itemPath>Sources/UTIL/alocacao_memoria.h</itemPath>
+        <itemPath>Sources/UTIL/my_bool.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Arquivos de Código-Fonte"
+                   projectFiles="true">
+      <logicalFolder name="f3" displayName="BD" projectFiles="true">
+        <itemPath>Sources/BD/bd.c</itemPath>
+        <itemPath>Sources/BD/caixa_bd.c</itemPath>
+        <itemPath>Sources/BD/empresa_bd.c</itemPath>
+        <itemPath>Sources/BD/fabricante_bd.c</itemPath>
+        <itemPath>Sources/BD/funcionario_bd.c</itemPath>
+        <itemPath>Sources/BD/grupo_bd.c</itemPath>
+        <itemPath>Sources/BD/teste.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4" displayName="MENU" projectFiles="true">
+        <logicalFolder name="f1" displayName="nota_fiscal" projectFiles="true">
+          <itemPath>Sources/MENU/cupom_fiscal/formatacao_cupom.c</itemPath>
+          <itemPath>Sources/MENU/cupom_fiscal/horario_cupom.c</itemPath>
+        </logicalFolder>
+        <itemPath>Sources/MENU/menu.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="MODELO" projectFiles="true">
+        <itemPath>Sources/MODELO/empresa_funcoes.c</itemPath>
+        <itemPath>Sources/MODELO/fabricante_funcoes.c</itemPath>
+        <itemPath>Sources/MODELO/funcionario_funcoes.c</itemPath>
+        <itemPath>Sources/MODELO/produtos_funcoes.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="UTIL" projectFiles="true">
+        <itemPath>Sources/UTIL/alocacao_memoria.c</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Arquivos de Recurso"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="Documentos" displayName="Documentos" projectFiles="true">
+      <logicalFolder name="Modelagem" displayName="Modelagem" projectFiles="true">
+        <itemPath>Documentos/Modelagem/BD_CCE_V1.0.mwb</itemPath>
+        <itemPath>Documentos/Modelagem/BD_CCE_V1.0.mwb.bak</itemPath>
+        <itemPath>Documentos/Modelagem/Teste.mwb</itemPath>
+        <itemPath>Documentos/Modelagem/Teste.mwb.bak</itemPath>
+        <itemPath>Documentos/Modelagem/descrição.txt</itemPath>
+        <itemPath>Documentos/Modelagem/script_bd_v1.0.sql</itemPath>
+      </logicalFolder>
+      <itemPath>Documentos/DocumentoFinal.pdf</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Arquivos de Teste"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Arquivos Importantes"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>Sources/BD</Elem>
+    <Elem>Sources/MENU</Elem>
+    <Elem>Sources/MODELO</Elem>
+    <Elem>Sources/UTIL</Elem>
+    <Elem>Documentos</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+      </compileType>
+      <item path="Documentos/DocumentoFinal.pdf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/BD_CCE_V1.0.mwb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/BD_CCE_V1.0.mwb.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/Teste.mwb" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/Teste.mwb.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/descrição.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/script_bd_v1.0.sql"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Sources/BD/bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/caixa_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/caixa_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/compra_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/empresa_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/empresa_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/fabricante_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/fabricante_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/funcionario_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/funcionario_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/grupo_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/grupo_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/movimentacao_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/produto_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/reposicao_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/teste.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/turno_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MENU/cupom_fiscal/formatacao_cupom.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="Sources/MENU/cupom_fiscal/formatacao_cupom.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Sources/MENU/cupom_fiscal/horario_cupom.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="Sources/MENU/cupom_fiscal/horario_cupom.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Sources/MENU/menu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/caixa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/compra.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/empresa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/empresa_funcoes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/fabricante.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/fabricante_funcoes.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="Sources/MODELO/funcionario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/funcionario_funcoes.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="Sources/MODELO/grupo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/movimentacao.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/produto.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/produtos_funcoes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/reposicao.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/turno.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/alocacao_memoria.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/alocacao_memoria.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/my_bool.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <standard>2</standard>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="Documentos/DocumentoFinal.pdf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/BD_CCE_V1.0.mwb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/BD_CCE_V1.0.mwb.bak"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/Teste.mwb" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/Teste.mwb.bak" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/descrição.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Documentos/Modelagem/script_bd_v1.0.sql"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Sources/BD/bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/caixa_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/caixa_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/compra_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/empresa_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/empresa_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/fabricante_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/fabricante_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/funcionario_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/funcionario_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/grupo_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/grupo_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/movimentacao_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/produto_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/reposicao_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/teste.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/BD/turno_bd.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MENU/cupom_fiscal/formatacao_cupom.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="Sources/MENU/cupom_fiscal/formatacao_cupom.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Sources/MENU/cupom_fiscal/horario_cupom.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="Sources/MENU/cupom_fiscal/horario_cupom.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Sources/MENU/menu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/caixa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/compra.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/empresa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/empresa_funcoes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/fabricante.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/fabricante_funcoes.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="Sources/MODELO/funcionario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/funcionario_funcoes.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="Sources/MODELO/grupo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/movimentacao.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/produto.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/produtos_funcoes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/reposicao.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/MODELO/turno.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/alocacao_memoria.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/alocacao_memoria.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/my_bool.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

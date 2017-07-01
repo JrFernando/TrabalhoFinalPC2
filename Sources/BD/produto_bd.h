@@ -39,7 +39,7 @@ int getQtdAllProdutos();
  *       retornar a quantidade de Produtos que contém o ponteiro
  *       que é retornado pela função.
  */
-Produtos* getAllProdutos(int* tam);
+Produto* getAllProdutos(int* tam);
 
 /**
  * Esta recebe um Produto e faz sua inserção no 

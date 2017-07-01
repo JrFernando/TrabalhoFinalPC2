@@ -15,7 +15,7 @@
  *
  * return - Retorna uma struct Fabricante. Caso não exista retorna NULL. 
  */
-Fabricante find_fabricante(int);
+Fabricante* find_fabricante(int);
 
 /**
  * Esta função retorna um ponteiro para todos os 
@@ -31,15 +31,6 @@ Fabricante* get_all_fabricantes();
  */
 int get_qtd_all_fabricantes();
 
-/**
- * Esta função retorna um ponteiro para todos os 
- * fabricantes cadastrados no banco de dados.
- *
- * tam - Ponteiro para uma variavel inteira. É usada para
- *       retornar a quantidade de Fabricantes que contém o ponteiro
- *       que é retornado pela função.
- */
-Fabricante* get_all_fabricantes(int* tam);
 
 /**
  * Esta recebe um Fabricante e faz sua inserção no 
