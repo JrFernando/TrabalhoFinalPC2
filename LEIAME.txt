@@ -1,4 +1,0 @@
-Pai o que está de amarelo a princípio não vamos implementar.
-
-Comece a desenvolver seus módulos (que por enquanto não está ligado com o BD) pelas tabelas que estão em azul escuro.
-Não esqueça que você tem que fazer toda interação do usuário, para cadastar, alterar, remover.
