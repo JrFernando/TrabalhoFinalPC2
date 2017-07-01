@@ -35,12 +35,14 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Sources/BD/acoes_funcionario_bd.o \
 	${OBJECTDIR}/Sources/BD/bd.o \
 	${OBJECTDIR}/Sources/BD/caixa_bd.o \
 	${OBJECTDIR}/Sources/BD/empresa_bd.o \
 	${OBJECTDIR}/Sources/BD/fabricante_bd.o \
 	${OBJECTDIR}/Sources/BD/funcionario_bd.o \
 	${OBJECTDIR}/Sources/BD/grupo_bd.o \
+	${OBJECTDIR}/Sources/BD/produto_bd.o \
 	${OBJECTDIR}/Sources/BD/teste.o \
 	${OBJECTDIR}/Sources/MENU/cupom_fiscal/formatacao_cupom.o \
 	${OBJECTDIR}/Sources/MENU/cupom_fiscal/horario_cupom.o \
@@ -76,6 +78,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/Sources/BD/acoes_funcionario_bd.o: Sources/BD/acoes_funcionario_bd.c
+	${MKDIR} -p ${OBJECTDIR}/Sources/BD
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/BD/acoes_funcionario_bd.o Sources/BD/acoes_funcionario_bd.c
+
 ${OBJECTDIR}/Sources/BD/bd.o: Sources/BD/bd.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/BD
 	${RM} "$@.d"
@@ -105,6 +112,11 @@ ${OBJECTDIR}/Sources/BD/grupo_bd.o: Sources/BD/grupo_bd.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/BD
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/BD/grupo_bd.o Sources/BD/grupo_bd.c
+
+${OBJECTDIR}/Sources/BD/produto_bd.o: Sources/BD/produto_bd.c
+	${MKDIR} -p ${OBJECTDIR}/Sources/BD
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/BD/produto_bd.o Sources/BD/produto_bd.c
 
 ${OBJECTDIR}/Sources/BD/teste.o: Sources/BD/teste.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/BD

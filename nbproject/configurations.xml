@@ -8,15 +8,11 @@
         <itemPath>Sources/BD/acoes_funcionario_bd.h</itemPath>
         <itemPath>Sources/BD/bd.h</itemPath>
         <itemPath>Sources/BD/caixa_bd.h</itemPath>
-        <itemPath>Sources/BD/compra_bd.h</itemPath>
         <itemPath>Sources/BD/empresa_bd.h</itemPath>
         <itemPath>Sources/BD/fabricante_bd.h</itemPath>
         <itemPath>Sources/BD/funcionario_bd.h</itemPath>
         <itemPath>Sources/BD/grupo_bd.h</itemPath>
-        <itemPath>Sources/BD/movimentacao_bd.h</itemPath>
         <itemPath>Sources/BD/produto_bd.h</itemPath>
-        <itemPath>Sources/BD/reposicao_bd.h</itemPath>
-        <itemPath>Sources/BD/turno_bd.h</itemPath>
       </logicalFolder>
       <logicalFolder name="MENU" displayName="MENU" projectFiles="true">
         <logicalFolder name="cupom_fiscal"
@@ -41,6 +37,7 @@
       </logicalFolder>
       <logicalFolder name="UTIL" displayName="UTIL" projectFiles="true">
         <itemPath>Sources/UTIL/alocacao_memoria.h</itemPath>
+        <itemPath>Sources/BD/horario.h</itemPath>
         <itemPath>Sources/UTIL/my_bool.h</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -48,12 +45,14 @@
                    displayName="Arquivos de Código-Fonte"
                    projectFiles="true">
       <logicalFolder name="f3" displayName="BD" projectFiles="true">
+        <itemPath>Sources/BD/acoes_funcionario_bd.c</itemPath>
         <itemPath>Sources/BD/bd.c</itemPath>
         <itemPath>Sources/BD/caixa_bd.c</itemPath>
         <itemPath>Sources/BD/empresa_bd.c</itemPath>
         <itemPath>Sources/BD/fabricante_bd.c</itemPath>
         <itemPath>Sources/BD/funcionario_bd.c</itemPath>
         <itemPath>Sources/BD/grupo_bd.c</itemPath>
+        <itemPath>Sources/BD/produto_bd.c</itemPath>
         <itemPath>Sources/BD/teste.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="MENU" projectFiles="true">
@@ -140,6 +139,8 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="Sources/BD/acoes_funcionario_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="Sources/BD/acoes_funcionario_bd.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/BD/bd.c" ex="false" tool="0" flavor2="0">
@@ -149,8 +150,6 @@
       <item path="Sources/BD/caixa_bd.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Sources/BD/caixa_bd.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Sources/BD/compra_bd.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/BD/empresa_bd.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -168,15 +167,13 @@
       </item>
       <item path="Sources/BD/grupo_bd.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Sources/BD/movimentacao_bd.h" ex="false" tool="3" flavor2="0">
+      <item path="Sources/BD/horario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/produto_bd.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Sources/BD/produto_bd.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Sources/BD/reposicao_bd.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Sources/BD/teste.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="Sources/BD/turno_bd.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/MENU/cupom_fiscal/formatacao_cupom.c"
             ex="false"
@@ -287,6 +284,8 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="Sources/BD/acoes_funcionario_bd.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="Sources/BD/acoes_funcionario_bd.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/BD/bd.c" ex="false" tool="0" flavor2="0">
@@ -296,8 +295,6 @@
       <item path="Sources/BD/caixa_bd.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Sources/BD/caixa_bd.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Sources/BD/compra_bd.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/BD/empresa_bd.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -315,15 +312,13 @@
       </item>
       <item path="Sources/BD/grupo_bd.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Sources/BD/movimentacao_bd.h" ex="false" tool="3" flavor2="0">
+      <item path="Sources/BD/horario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/BD/produto_bd.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Sources/BD/produto_bd.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Sources/BD/reposicao_bd.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Sources/BD/teste.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="Sources/BD/turno_bd.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/MENU/cupom_fiscal/formatacao_cupom.c"
             ex="false"
