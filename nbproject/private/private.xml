@@ -7,11 +7,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/MENU/caixa.h</file>
-            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/BD/bd.h</file>
-            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/MENU/nota_fiscal/formatacao_cupom.h</file>
-            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/BD/fabricante_bd.c</file>
-            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/BD/bd.c</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/BD/produto_bd.h</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/MODELO/turno.h</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/BD/funcionario_bd.h</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/MENU/menu.c</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/MODELO/grupo.h</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/BD/grupo_bd.h</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/MODELO/funcionario.h</file>
         </group>
     </open-files>
 </project-private>
