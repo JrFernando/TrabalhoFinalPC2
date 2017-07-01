@@ -7,7 +7,7 @@
  *
  * @date 27/06/2017
 */
-#include "fabricante.h"
+#include "../BD/fabricante_bd.h"
  
 typedef struct {
 	int id;

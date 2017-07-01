@@ -1,31 +1,29 @@
 /**
  * Este módulo é responsável pelas funções de manipulações dos dados
- * da tabela Funcionarios
+ * da tabela Fabricante
  *
  * @author Fernando Júnior Gomes da Silva <fernandojunior20110@gmail.com>
  * @date 30/06/2017
  */
 #include <string.h>
 
-#include "funcionario_bd.h"
+#include "fabricante_bd.h"
 #include "../UTIL/alocacao_memoria.h"
 
 #define TAM_MAX_ID 4
-#define TAM_MAX_SALARIO 6
 
-Funcionario* find_funcionario(int id) {
+Fabricante* find_fabricante(int id) {
     MYSQL mysql;
     MYSQL_RES *resposta;
     MYSQL_ROW linhas;
-    char *query = "select * from Funcionarios where func_id =  ;";
-    Funcionario *funcionario;
-    Grupo* grupo;
-    int tamanho = 0, id_grupo;
+    char *query = "select * from Fabricantes where fabr_id =  ;";
+    Fabricante* fabricante;
+    int tamanho = 0;
 
     tamanho = strlen(query) + TAM_MAX_ID;
     query = (char*) alocar_memoria(tamanho, sizeof (char));
 
-    sprintf(query, "select * from Funcionarios where func_id = %d;", id);
+    sprintf(query, "select * from Fabricantes where fabr_id = %d;", id);
 
     if (!bd_open(&mysql)) return NULL;
 
@@ -38,20 +36,13 @@ Funcionario* find_funcionario(int id) {
 
 
     if ((resposta = mysql_store_result(&mysql))) {
-        funcionario = (Funcionario*) alocar_memoria(1, sizeof (Funcionario));
+        fabricante = (Fabricante*) alocar_memoria(1, sizeof (Fabricante));
         linhas = mysql_fetch_row(resposta);
 
-        funcionario->id = atoi(linhas[0]);
+        fabricante->id = atoi(linhas[0]);
 
-        funcionario->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
-        strcpy(funcionario->nome, linhas[1]);
-
-        funcionario->salario = atof(linhas[3]);
-
-        id_grupo = atoi(linhas[4]);
-        grupo = find_grupo(id_grupo);
-        funcionario->grupo = *grupo;
-
+        fabricante->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
+        strcpy(fabricante->nome, linhas[1]);
     } else {
         //Descomente para debugar
         //printf("Erro: %s\n", mysql_error(&mysql));
@@ -62,17 +53,16 @@ Funcionario* find_funcionario(int id) {
     mysql_free_result(resposta);
     bd_close(&mysql);
 
-    return funcionario;
+    return fabricante;
 }
 
-Funcionario* get_all_funcionarios() {
+Fabricante* get_all_fabricantes() {
     MYSQL mysql;
     MYSQL_RES *resposta;
     MYSQL_ROW linhas;
-    char *query = "select * from Funcionarios;";
-    Funcionario *funcionarios, *temp;
-    Grupo *grupo;
-    int quantidade, id_grupo;
+    char *query = "select * from Fabricantes;";
+    Fabricante *fabricantes, *temp;
+    int quantidade;
 
     if (!bd_open(&mysql)) return NULL;
 
@@ -86,20 +76,14 @@ Funcionario* get_all_funcionarios() {
     if ((resposta = mysql_store_result(&mysql))) {
         quantidade = mysql_num_rows(resposta);
 
-        funcionarios = (Funcionario*) alocar_memoria(quantidade, sizeof (Funcionario));
+        fabricantes = (Fabricante*) alocar_memoria(quantidade, sizeof (Fabricante));
 
-        temp = funcionarios;
+        temp = fabricantes;
         while ((linhas = mysql_fetch_row(resposta)) != NULL) {
             temp->id = atoi(linhas[0]);
 
             temp->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
             strcpy(temp->nome, linhas[1]);
-
-            temp->salario = atof(linhas[3]);
-
-            id_grupo = atoi(linhas[4]);
-            grupo = find_grupo(id_grupo);
-            temp->grupo = *grupo;
 
             temp++;
         }
@@ -114,13 +98,13 @@ Funcionario* get_all_funcionarios() {
     mysql_free_result(resposta);
     bd_close(&mysql);
 
-    return funcionarios;
+    return fabricantes;
 }
 
-int get_qtd_all_funcionarios() {
+int get_qtd_all_fabricantes() {
     MYSQL mysql;
     MYSQL_RES *resposta;
-    char *query = "select * from Funcionarios;";
+    char *query = "select * from Fabricantes;";
     int quantidade = -1;
 
     if (!bd_open(&mysql)) return -1;
@@ -140,16 +124,15 @@ int get_qtd_all_funcionarios() {
     return quantidade;
 }
 
-bool insert_funcionario(const Funcionario funcionario) {
+bool insert_fabricante(const Fabricante fabricante) {
     MYSQL mysql;
-    char* query = "insert into Funcionarios (func_nome, func_salario, func_grup_id) values (\"\",,);"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
+    char* query = "insert into Fabricantes (fabr_nome) values (\"\");"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
     int tamanho = 0;
 
-    tamanho = strlen(query) + strlen(funcionario.nome) + TAM_MAX_SALARIO + TAM_MAX_ID;
+    tamanho = strlen(query) + strlen(fabricante.nome);
     query = (char*) alocar_memoria(tamanho, sizeof (char));
 
-    sprintf(query, "insert into Funcionarios (func_nome, func_salario, func_grup_id) values (\"%s\",%.2f,%d);",
-            funcionario.nome, funcionario.salario, funcionario.grupo.id);
+    sprintf(query, "insert into Fabricantes (fabr_nome) values (\"%s\");", fabricante.nome);
 
     if (!bd_open(&mysql)) return FALSE;
 
@@ -164,16 +147,15 @@ bool insert_funcionario(const Funcionario funcionario) {
     }
 }
 
-bool update_funcionario(const Funcionario funcionario) {
+bool update_fabricante(const Fabricante fabricante) {
     MYSQL mysql;
-    char* query = "update Funcionarios set func_nome = \"\", func_salario = , func_grup_id =  where func_id = ;"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
+    char* query = "update Fabricantes set fabr_nome = \"\" where fabr_id = ;"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
     int tamanho = 0;
 
-    tamanho = strlen(query) + strlen(funcionario.nome) + TAM_MAX_SALARIO + TAM_MAX_ID + TAM_MAX_ID;
+    tamanho = strlen(query) + strlen(fabricante.nome) + TAM_MAX_ID;
     query = (char*) alocar_memoria(tamanho, sizeof (char));
 
-    sprintf(query, "update Funcionarios set func_nome = \"%s\", func_salario = %.2f, func_grup_id = %d where func_id = %d;",
-            funcionario.nome, funcionario.salario, funcionario.grupo.id, funcionario.id);
+    sprintf(query, "update Fabricantes set fabr_nome = \"%s\" where fabr_id = %d;", fabricante.nome, fabricante.id);
 
     if (!bd_open(&mysql)) return FALSE;
 
@@ -188,15 +170,15 @@ bool update_funcionario(const Funcionario funcionario) {
     }
 }
 
-bool delete_funcionario(const Funcionario funcionario) {
+bool delete_fabricante(const Fabricante fabricante) {
     MYSQL mysql;
-    char* query = "delete from Funcionarios where func_id = ;"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
+    char* query = "delete from Fabricantes where fabr_id = ;"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
     int tamanho = 0;
 
     tamanho = strlen(query) + TAM_MAX_ID;
     query = (char*) alocar_memoria(tamanho, sizeof (char));
 
-    sprintf(query, "delete from Funcionarios where func_id = %d;", funcionario.id);
+    sprintf(query, "delete from Fabricantes where fabr_id = %d;", fabricante.id);
 
     if (!bd_open(&mysql)) return FALSE;
 

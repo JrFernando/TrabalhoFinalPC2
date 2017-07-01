@@ -97,7 +97,7 @@ float get_saldo_caixa(Caixa caixa){
 
 bool atualiza_saldo_caixa(Caixa caixa, float valor_compra){
 	MYSQL mysql;
-	char* query = "update Caixas set caixa_saldo =  where caix_id = ;"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
+	char* query = "update Caixas set caix_saldo =  where caix_id = ;"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
 	int tamanho = 0;
 	float saldo_atual;
 	
@@ -110,7 +110,7 @@ bool atualiza_saldo_caixa(Caixa caixa, float valor_compra){
 		return FALSE;
 	}
 
-	sprintf(query, "update Caixas set caixa_saldo = %.2f where caix_id = %d;", saldo_atual + valor_compra, caixa.id);
+	sprintf(query, "update Caixas set caix_saldo = %.2f where caix_id = %d;", saldo_atual + valor_compra, caixa.id);
 
 	if(! bd_open(&mysql) ) return FALSE;
 
@@ -127,7 +127,7 @@ bool atualiza_saldo_caixa(Caixa caixa, float valor_compra){
 
 bool movimentar_saldo_caixa(Caixa caixa, float valor_baixa){
 	MYSQL mysql;
-	char* query = "update Caixas set caixa_saldo =  where caix_id = ;"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
+	char* query = "update Caixas set caix_saldo =  where caix_id = ;"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
 	int tamanho = 0;
 	float saldo_atual;
 
@@ -140,7 +140,7 @@ bool movimentar_saldo_caixa(Caixa caixa, float valor_baixa){
 		return FALSE;
 	}
 
-	sprintf(query, "update Caixas set caixa_saldo = %.2f where caix_id = %d;", saldo_atual - valor_baixa, caixa.id);
+	sprintf(query, "update Caixas set caix_saldo = %.2f where caix_id = %d;", saldo_atual - valor_baixa, caixa.id);
 
 	if(! bd_open(&mysql) ) return FALSE;
 
