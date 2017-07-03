@@ -32,6 +32,15 @@ char* tm_to_string_bd(tm horario){
     return retorno;
 }
 
+char* tm_to_string_date_bd(tm horario){
+    char* retorno;
+    
+    retorno = (char*) alocar_memoria(TAM_MAX_STRING_DATE, sizeof(char));    
+    sprintf(retorno, "%d-%d-%d", horario.tm_year, horario.tm_mon, horario.tm_mday);
+    
+    return retorno;
+}
+
 tm string_bd_to_tm(char* string){
     tm horario;
  
