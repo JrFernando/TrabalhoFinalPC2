@@ -6,6 +6,7 @@
  * @date 01/07/2017
  */
 #include <string.h>
+#include <stdlib.h>
 
 #include "produto_bd.h"
 #include "../UTIL/alocacao_memoria.h"
@@ -31,7 +32,7 @@ Produto* find_produto(const int id) {
 
     if (mysql_query(&mysql, query)) {
         //Descomente para debugar
-        printf("Erro: %s\n", mysql_error(&mysql));
+        //printf("Erro: %s\n", mysql_error(&mysql));
         bd_close(&mysql);
         return NULL;
     }
@@ -54,7 +55,7 @@ Produto* find_produto(const int id) {
 
     } else {
         //Descomente para debugar
-        printf("Erro: %s\n", mysql_error(&mysql));
+        //printf("Erro: %s\n", mysql_error(&mysql));
         bd_close(&mysql);
         return NULL;
     }
@@ -77,7 +78,7 @@ Produto* get_all_produtos() {
 
     if (mysql_query(&mysql, query)) {
         //Descomente para debugar
-        printf("Erro: %s\n", mysql_error(&mysql));
+        //printf("Erro: %s\n", mysql_error(&mysql));
         bd_close(&mysql);
         return NULL;
     }
@@ -105,7 +106,7 @@ Produto* get_all_produtos() {
 
     } else {
         //Descomente para debugar
-        printf("Erro: %s\n", mysql_error(&mysql));
+        //printf("Erro: %s\n", mysql_error(&mysql));
         bd_close(&mysql);
         return NULL;
     }
@@ -126,7 +127,7 @@ int get_qtd_all_produtos() {
 
     if (mysql_query(&mysql, query)) {
         //Descomente para debugar
-        printf("Erro: %s\n", mysql_error(&mysql));
+        //printf("Erro: %s\n", mysql_error(&mysql));
         bd_close(&mysql);
         return -1;
     }
@@ -157,7 +158,7 @@ bool insert_produto(const Produto produto) {
         return TRUE;
     } else {
         //Descomente para debugar
-        printf("Erro: %s\n", mysql_error(&mysql));
+        //printf("Erro: %s\n", mysql_error(&mysql));
         bd_close(&mysql);
         return FALSE;
     }
@@ -181,7 +182,7 @@ bool update_produto(const Produto produto) {
         return TRUE;
     } else {
         //Descomente para debugar
-        printf("Erro: %s\n", mysql_error(&mysql));
+        //printf("Erro: %s\n", mysql_error(&mysql));
         bd_close(&mysql);
         return FALSE;
     }
@@ -204,7 +205,7 @@ bool delete_produto(const Produto produto) {
         return TRUE;
     } else {
         //Descomente para debugar
-        printf("Erro: %s\n", mysql_error(&mysql));
+        //printf("Erro: %s\n", mysql_error(&mysql));
         bd_close(&mysql);
         return FALSE;
     }
