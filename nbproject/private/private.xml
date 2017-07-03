@@ -8,7 +8,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/BD/acoes_funcionario_bd.h</file>
-            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/MENU/menu.c</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/UTIL/horario.h</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/BD/produto_bd.c</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/BD/teste.c</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/BD/acoes_funcionario_bd.c</file>
+            <file>file:/home/fernandojr/TrabalhoFinalPC2/Sources/UTIL/horario.c</file>
         </group>
     </open-files>
 </project-private>

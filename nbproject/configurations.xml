@@ -37,7 +37,7 @@
       </logicalFolder>
       <logicalFolder name="UTIL" displayName="UTIL" projectFiles="true">
         <itemPath>Sources/UTIL/alocacao_memoria.h</itemPath>
-        <itemPath>Sources/BD/horario.h</itemPath>
+        <itemPath>Sources/UTIL/horario.h</itemPath>
         <itemPath>Sources/UTIL/my_bool.h</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -70,6 +70,7 @@
       </logicalFolder>
       <logicalFolder name="f1" displayName="UTIL" projectFiles="true">
         <itemPath>Sources/UTIL/alocacao_memoria.c</itemPath>
+        <itemPath>Sources/UTIL/horario.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -167,8 +168,6 @@
       </item>
       <item path="Sources/BD/grupo_bd.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Sources/BD/horario.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Sources/BD/produto_bd.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Sources/BD/produto_bd.h" ex="false" tool="3" flavor2="0">
@@ -236,6 +235,10 @@
       <item path="Sources/UTIL/alocacao_memoria.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Sources/UTIL/alocacao_memoria.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/horario.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/horario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/UTIL/my_bool.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -312,8 +315,6 @@
       </item>
       <item path="Sources/BD/grupo_bd.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Sources/BD/horario.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Sources/BD/produto_bd.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Sources/BD/produto_bd.h" ex="false" tool="3" flavor2="0">
@@ -381,6 +382,10 @@
       <item path="Sources/UTIL/alocacao_memoria.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Sources/UTIL/alocacao_memoria.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/horario.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/horario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/UTIL/my_bool.h" ex="false" tool="3" flavor2="0">
       </item>
