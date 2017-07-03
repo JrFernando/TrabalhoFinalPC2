@@ -39,6 +39,7 @@
         <itemPath>Sources/UTIL/alocacao_memoria.h</itemPath>
         <itemPath>Sources/UTIL/horario.h</itemPath>
         <itemPath>Sources/UTIL/my_bool.h</itemPath>
+        <itemPath>Sources/UTIL/my_string.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
@@ -71,6 +72,7 @@
       <logicalFolder name="f1" displayName="UTIL" projectFiles="true">
         <itemPath>Sources/UTIL/alocacao_memoria.c</itemPath>
         <itemPath>Sources/UTIL/horario.c</itemPath>
+        <itemPath>Sources/UTIL/my_string.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -242,6 +244,10 @@
       </item>
       <item path="Sources/UTIL/my_bool.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Sources/UTIL/my_string.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/my_string.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -388,6 +394,10 @@
       <item path="Sources/UTIL/horario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Sources/UTIL/my_bool.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/my_string.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Sources/UTIL/my_string.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

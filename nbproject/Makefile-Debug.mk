@@ -52,7 +52,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/Sources/MODELO/funcionario_funcoes.o \
 	${OBJECTDIR}/Sources/MODELO/produtos_funcoes.o \
 	${OBJECTDIR}/Sources/UTIL/alocacao_memoria.o \
-	${OBJECTDIR}/Sources/UTIL/horario.o
+	${OBJECTDIR}/Sources/UTIL/horario.o \
+	${OBJECTDIR}/Sources/UTIL/my_string.o
 
 
 # C Compiler Flags
@@ -168,6 +169,11 @@ ${OBJECTDIR}/Sources/UTIL/horario.o: Sources/UTIL/horario.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/UTIL
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/UTIL/horario.o Sources/UTIL/horario.c
+
+${OBJECTDIR}/Sources/UTIL/my_string.o: Sources/UTIL/my_string.c
+	${MKDIR} -p ${OBJECTDIR}/Sources/UTIL
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/UTIL/my_string.o Sources/UTIL/my_string.c
 
 # Subprojects
 .build-subprojects:
