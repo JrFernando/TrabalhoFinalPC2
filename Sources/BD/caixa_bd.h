@@ -34,7 +34,7 @@ float get_saldo_caixa(Caixa caixa);
  * id - identificador do caixa que deseja atualizar o saldo
  * valor_compra - valor da compra para atualizar o caixa
  */
-bool atualiza_saldo_caixa(Caixa caixa, float valor_compra);
+bool atualiza_saldo_caixa(Caixa caixa);
 
 /**
  * Esta função faz uma baixa no caixa
@@ -42,7 +42,7 @@ bool atualiza_saldo_caixa(Caixa caixa, float valor_compra);
  * id - identificador do caixa que deseja dar baixa
  * valor_baixa - valor que deseja retirar do caixa
  */
-bool movimentar_saldo_caixa(Caixa caixa, float valor_baixa);
+bool movimentar_saldo_caixa(Caixa caixa);
 
 /**
  * Esta função retorna um ponteiro para todos os 

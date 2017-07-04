@@ -95,22 +95,15 @@ float get_saldo_caixa(Caixa caixa){
 	return saldo;
 }
 
-bool atualiza_saldo_caixa(Caixa caixa, float valor_compra){
+bool atualiza_saldo_caixa(Caixa caixa){
 	MYSQL mysql;
 	char* query = "update Caixas set caix_saldo =  where caix_id = ;"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
 	int tamanho = 0;
-	float saldo_atual;
 	
 	tamanho = strlen(query) + TAM_MAX_SALDO + TAM_MAX_ID;
 	query = (char*) alocar_memoria(tamanho, sizeof(char));
 
-	if( (saldo_atual = get_saldo_caixa(caixa)) == -1){
-		//Descomente para debugar
-		//printf("Erro ao obter saldo atual!\n");
-		return FALSE;
-	}
-
-	sprintf(query, "update Caixas set caix_saldo = %.2f where caix_id = %d;", saldo_atual + valor_compra, caixa.id);
+	sprintf(query, "update Caixas set caix_saldo = %.2f where caix_id = %d;", caixa.saldo, caixa.id);
 
 	if(! bd_open(&mysql) ) return FALSE;
 
@@ -125,22 +118,15 @@ bool atualiza_saldo_caixa(Caixa caixa, float valor_compra){
 	}
 }
 
-bool movimentar_saldo_caixa(Caixa caixa, float valor_baixa){
+bool movimentar_saldo_caixa(Caixa caixa){
 	MYSQL mysql;
 	char* query = "update Caixas set caix_saldo =  where caix_id = ;"; //Para que eu possa calcular o tamanho da string final e alocar memória suficiente;
 	int tamanho = 0;
-	float saldo_atual;
 
 	tamanho = strlen(query) + TAM_MAX_SALDO + TAM_MAX_ID;
 	query = (char*) alocar_memoria(tamanho, sizeof(char));
 
-	if( (saldo_atual = get_saldo_caixa(caixa)) == -1){
-		//Descomente para debugar
-		//printf("Erro ao obter saldo atual!\n");
-		return FALSE;
-	}
-
-	sprintf(query, "update Caixas set caix_saldo = %.2f where caix_id = %d;", saldo_atual - valor_baixa, caixa.id);
+	sprintf(query, "update Caixas set caix_saldo = %.2f where caix_id = %d;", caixa.saldo, caixa.id);
 
 	if(! bd_open(&mysql) ) return FALSE;
 
