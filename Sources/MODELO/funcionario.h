@@ -3,11 +3,11 @@
  * da struct.
  *
  * @author Fernando Júnior Gomes da Silva <fernandojunior20110@gmail.com>
-  @author Lucas Baleeiro Dominato <lucasdominato2@gmail.com>
- 
+ * @author Lucas Baleeiro Dominato <lucasdominato2@gmail.com>
+ *
  * @date 27/06/2017
 */
-#include "grupo_bd.h"
+#include "../BD/grupo_bd.h"
  
 typedef struct {
 	int id;
