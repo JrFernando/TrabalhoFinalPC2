@@ -15,7 +15,7 @@ MYSQL* bd_open(MYSQL* mysql){
 	if(mysql_real_connect(mysql, HOST, USER, PASSWORD, DATABASE, 0, NULL, 0) ) ;//printf("Conectado com sucesso!\n");
 	else {
 		//Descomente para debugar
-		//printf("Erro %d: %s\n", mysql_errno(mysql), mysql_error(mysql));
+		printf("Erro %u: %s\n", mysql_errno(mysql), mysql_error(mysql));
 		return NULL;
 	}
 }
