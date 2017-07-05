@@ -205,7 +205,7 @@ Produto* find_produtos_estoque_baixo(int n) {
     return produtos;
 }
 
-int get_qtd_find_produtos_estoque_baixo(int n){
+int get_qtd_find_produtos_estoque_baixo(int n) {
     MYSQL mysql;
     MYSQL_RES *resposta;
     char *query = "select * from Produtos where prod_quantidade <= ;";
@@ -221,6 +221,109 @@ int get_qtd_find_produtos_estoque_baixo(int n){
     if (mysql_query(&mysql, query)) {
         //Descomente para debugar
         printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return -1;
+    }
+
+    if ((resposta = mysql_store_result(&mysql))) quantidade = mysql_num_rows(resposta);
+
+    mysql_free_result(resposta);
+    bd_close(&mysql);
+
+    return quantidade;
+}
+
+Produto* find_produtos_mais_vendidos() {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    MYSQL_ROW linhas;
+    char *query = "select prod_id from Produtos inner join Compras on comp_prod_id = prod_id group by prod_id order by sum(comp_qtd_produto) desc;";
+    Produto *produtos, *temp;
+    int tamanho = 0, quantidade;
+
+    if (!bd_open(&mysql)) return NULL;
+
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+
+    if ((resposta = mysql_store_result(&mysql))) {
+        quantidade = mysql_num_rows(resposta);
+        produtos = (Produto*) alocar_memoria(quantidade, sizeof (Produto));
+        temp = produtos;
+        while ((linhas = mysql_fetch_row(resposta)) != NULL) {
+            *temp = *(find_produto(atoi(linhas[0])));
+            temp++;
+        }
+
+    } else {
+        //Descomente para debugar
+        printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+    mysql_free_result(resposta);
+    bd_close(&mysql);
+
+    return produtos;
+}
+
+int* find_qtd_produtos_mais_vendidos(){
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    MYSQL_ROW linhas;
+    char *query = "select sum(comp_qtd_produto) from Produtos inner join Compras on comp_prod_id = prod_id group by prod_id order by sum(comp_qtd_produto) desc;";
+    int *totais_vendidos, *temp;
+    int tamanho = 0, quantidade;
+
+    if (!bd_open(&mysql)) return NULL;
+
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+
+    if ((resposta = mysql_store_result(&mysql))) {
+        quantidade = mysql_num_rows(resposta);
+        totais_vendidos = (int*) alocar_memoria(quantidade, sizeof (int));
+        temp = totais_vendidos;
+        while ((linhas = mysql_fetch_row(resposta)) != NULL) {
+            *temp = atoi(linhas[0]);
+            temp++;
+        }
+
+    } else {
+        //Descomente para debugar
+        printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+    mysql_free_result(resposta);
+    bd_close(&mysql);
+
+    return totais_vendidos;
+}
+
+int get_qtd_find_produtos_mais_vendidos() {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    char *query = "select prod_id from Produtos inner join Compras on comp_prod_id = prod_id group by prod_id order by sum(comp_qtd_produto) desc;";
+    int quantidade = -1;
+
+    if (!bd_open(&mysql)) return -1;
+
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
         bd_close(&mysql);
         return -1;
     }

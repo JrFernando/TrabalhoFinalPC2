@@ -51,6 +51,29 @@ Produto* find_produtos_estoque_baixo(int n);
 int get_qtd_find_produtos_estoque_baixo(int n);
 
 /**
+ * Esta função retonar os produtos que são mais vendidos
+ * 
+ * @return Ponteiro para vários produtos;
+ */
+Produto* find_produtos_mais_vendidos();
+
+/**
+ * Esta função retorna um ponteiro para int com o total de vendas
+ * para cada produto, na mesma ordem da função find_produtos_mais_vendidos
+ * 
+ * @return Ponteiros para vários totais de vendas;
+ */
+int* find_qtd_produtos_mais_vendidos();
+
+/**
+ * Esta função retorna a quantidade de elementos que contém
+ * o retorno da função find_produtos_mais_vendidos;
+ * 
+ * @return Quantidade de elementos que a função find_produtos_mais_vendidos irá retornar;
+ */
+int get_qtd_find_produtos_mais_vendidos();
+
+/**
  * Esta função retorna um ponteiro para todos os 
  * produtos cadastrados no banco de dados.
  *
