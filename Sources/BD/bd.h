@@ -14,7 +14,7 @@
 #define HOST "localhost"
 #define USER "root"
 #define PASSWORD "123"
-#define DATABASE "SCCE_BD"
+#define DATABASE "SCCE"
 
 /**
  * Esta função abre uma conexão com o servidor MySQL
