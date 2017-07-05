@@ -16,6 +16,21 @@
 Funcionario* find_funcionario(int);
 
 /**
+ * Esta função recebe um nome, faz a busca no banco de dados
+ * pelo funcionario correspondente e o retorna. 
+ *
+ * nome - nome do funcionario que deseja buscar
+ */
+Funcionario* find_funcionario_nome(const char* nome);
+
+/**
+ * Esta função retorna quantos funcionario 
+ * foram encontrados na função find_funcionario_nome.
+ *
+ */
+int get_qtd_find_funcionario_nome(const char* nome);
+
+/**
  * Esta função retorna um ponteiro para todos os 
  * funcionarios cadastrados no banco de dados.
  *

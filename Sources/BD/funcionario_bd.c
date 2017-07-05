@@ -12,6 +12,7 @@
 
 #define TAM_MAX_ID 4
 #define TAM_MAX_SALARIO 6
+#define TAM_MAX_NOME 61;
 
 Funcionario* find_funcionario(int id) {
     MYSQL mysql;
@@ -22,7 +23,7 @@ Funcionario* find_funcionario(int id) {
     Grupo* grupo;
     int tamanho = 0, id_grupo;
 
-    tamanho = strlen(query) + TAM_MAX_ID;
+    tamanho = strlen(query) + TAM_MAX_SALARIO;
     query = (char*) alocar_memoria(tamanho, sizeof (char));
 
     sprintf(query, "select * from Funcionarios where func_id = %d;", id);
@@ -63,6 +64,86 @@ Funcionario* find_funcionario(int id) {
     bd_close(&mysql);
 
     return funcionario;
+}
+
+Funcionario* find_funcionario_nome(const char* nome) {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    MYSQL_ROW linhas;
+    char *query = "select * from Funcionarios where func_nome like  ;";
+    Funcionario *funcionario;
+    Grupo* grupo;
+    int tamanho = 0, id_grupo;
+
+    tamanho = strlen(query) + TAM_MAX_NOME;
+    query = (char*) alocar_memoria(tamanho, sizeof (char));
+
+    sprintf(query, "select * from Funcionarios where func_nome like \"%d%\";", nome);
+
+    if (!bd_open(&mysql)) return NULL;
+
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+
+    if ((resposta = mysql_store_result(&mysql))) {
+        funcionario = (Funcionario*) alocar_memoria(1, sizeof (Funcionario));
+        linhas = mysql_fetch_row(resposta);
+
+        funcionario->id = atoi(linhas[0]);
+
+        funcionario->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
+        strcpy(funcionario->nome, linhas[1]);
+
+        funcionario->salario = atof(linhas[3]);
+
+        id_grupo = atoi(linhas[4]);
+        grupo = find_grupo(id_grupo);
+        funcionario->grupo = *grupo;
+
+    } else {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+    mysql_free_result(resposta);
+    bd_close(&mysql);
+
+    return funcionario;
+}
+
+int get_qtd_find_funcionario_nome(const char* nome) {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    char *query = "select * from Funcionarios where func_nome like  ;";
+    int quantidade = -1, tamanho;
+
+    tamanho = strlen(query) + TAM_MAX_NOME;
+    query = (char*) alocar_memoria(tamanho, sizeof (char));
+
+    sprintf(query, "select * from Funcionarios where func_nome like \"%d%\";", nome);
+
+    if (!bd_open(&mysql)) return -1;
+
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return -1;
+    }
+
+    if ((resposta = mysql_store_result(&mysql))) quantidade = mysql_num_rows(resposta);
+
+    mysql_free_result(resposta);
+    bd_close(&mysql);
+
+    return quantidade;
 }
 
 Funcionario* get_all_funcionarios() {
