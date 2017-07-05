@@ -18,6 +18,39 @@
 Produto* find_produto(const int id);
 
 /**
+ * Esta função recebe um nome, faz a busca no banco de dados
+ * pelo produto correspondente e o retorna. 
+ *
+ * nome - nome do produto que deseja buscar
+ */
+Produto* find_produto_nome(const char* nome);
+
+/**
+ * Esta função retorna quantos produtos 
+ * foram encontrados na função find_produto_nome.
+ *
+ */
+int get_qtd_find_produto_nome(const char* nome);
+
+/**
+ * Esta função retonar os produtos que estão
+ * com o estoque abaixo do valor informado.
+ * 
+ * @param n número referência para determinar se o produto esta em baixa no estoque
+ * @return Ponteiro para vários produtos;
+ */
+Produto* find_produtos_estoque_baixo(int n);
+
+/**
+ * Esta função retorna a quantidade de elementos que contém
+ * o retorno da função find_produtos_estoque_baixo;
+ * 
+ * @param n Número referência para determinar se o produto esta em baixa no estoque
+ * @return Quantidade de elementos que a função find_produtos_estoque_baixo irá retornar;
+ */
+int get_qtd_find_produtos_estoque_baixo(int n);
+
+/**
  * Esta função retorna um ponteiro para todos os 
  * produtos cadastrados no banco de dados.
  *
@@ -30,6 +63,24 @@ Produto* get_all_produtos();
  *
  */
 int get_qtd_all_produtos();
+
+/**
+ * Esta função atualiza o estoque do produto
+ * 
+ * @param produto Produto a ser atualizado o estoque
+ * @param quantidade Quantidade do produto
+ * @return TRUE caso de certo e FALSE caso deu errado.
+ */
+bool atualiza_estoque_produto(Produto produto, int quantidade);
+
+/**
+ * Esta função é utiliza para repor o estoque
+ * 
+ * @param produto Produto a ser reposto o estoque
+ * @param quantidade Nova quantidade do produto
+ * @return TRUE caso de certo e FALSE caso deu errado.
+ */
+bool set_novo_estoque_produto(Produto produto, int quantidade);
 
 /**
  * Esta recebe um Produto e faz sua inserção no 
