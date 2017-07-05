@@ -72,9 +72,9 @@ Funcionario* find_funcionario_nome(const char* nome) {
     MYSQL_RES *resposta;
     MYSQL_ROW linhas;
     char *query = "select * from Funcionarios where func_nome like  ;";
-    Funcionario *funcionario;
+    Funcionario *funcionarios, *temp;
     Grupo* grupo;
-    int tamanho = 0, id_grupo;
+    int tamanho = 0, id_grupo, quantidade;
 
     tamanho = strlen(query) + TAM_MAX_NOME;
     query = (char*) alocar_memoria(tamanho, sizeof (char));
@@ -92,20 +92,25 @@ Funcionario* find_funcionario_nome(const char* nome) {
 
 
     if ((resposta = mysql_store_result(&mysql))) {
-        linhas = mysql_fetch_row(resposta);
-        if(linhas == NULL) return NULL;
+        quantidade = mysql_num_rows(resposta);
 
-        funcionario = (Funcionario*) alocar_memoria(1, sizeof (Funcionario));
-        funcionario->id = atoi(linhas[0]);
+        funcionarios = (Funcionario*) alocar_memoria(quantidade, sizeof (Funcionario));
 
-        funcionario->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
-        strcpy(funcionario->nome, linhas[1]);
+        temp = funcionarios;
+        while ((linhas = mysql_fetch_row(resposta)) != NULL) {
+            temp->id = atoi(linhas[0]);
 
-        funcionario->salario = atof(linhas[3]);
+            temp->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
+            strcpy(temp->nome, linhas[1]);
 
-        id_grupo = atoi(linhas[4]);
-        grupo = find_grupo(id_grupo);
-        funcionario->grupo = *grupo;
+            temp->salario = atof(linhas[3]);
+
+            id_grupo = atoi(linhas[4]);
+            grupo = find_grupo(id_grupo);
+            temp->grupo = *grupo;
+
+            temp++;
+        }
 
     } else {
         //Descomente para debugar
@@ -117,7 +122,7 @@ Funcionario* find_funcionario_nome(const char* nome) {
     mysql_free_result(resposta);
     bd_close(&mysql);
 
-    return funcionario;
+    return funcionarios;
 }
 
 int get_qtd_find_funcionario_nome(const char* nome) {
