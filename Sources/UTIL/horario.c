@@ -24,7 +24,7 @@ tm* gerando_horario(void){
 
 char* tm_to_string_bd(tm horario){
     char* retorno;
-    
+
     retorno = (char*) alocar_memoria(TAM_MAX_STRING_DATE, sizeof(char));    
     sprintf(retorno, "%d-%d-%d %d:%d:%d", horario.tm_year, horario.tm_mon, horario.tm_mday,
                                             horario.tm_hour, horario.tm_min, horario.tm_sec);
