@@ -1,6 +1,8 @@
 /**
  * Este módulo é responsável pelas funções de manipulações dos dados
  * da tabela Compras, Reposições, Turnos e Movimentações.
+ * 
+ * CRIEI ESSE ARQUIVO PARA CORRIGIR O ERRO DE CONFLITO DE IMPORTAÇÕES
  *
  * @author Fernando Júnior Gomes da Silva <fernandojunior20110@gmail.com>
  * @date 29/06/2017
@@ -53,6 +55,22 @@ Compra* find_compra_por_produto(const int id_produto);
 int get_qtd_compra_por_produto(const int id_produto);
 
 /**
+ * Esta função recebe um id de um vendedor, e busca no banco de dados
+ * todas as compras efetuadas por ele; 
+ *
+ * id_vendedor - identificador do vendedor
+ */
+Compra* find_compra_por_vendedor(const int id_vendedor);
+
+/**
+ * Esta função retorna quantas compras foram efetuadas pelo vendedor
+ *
+ * id_vendedor - identificador do vendedor 
+ *
+ */
+int get_qtd_compra_por_vendedor(const int id_vendedor);
+
+/**
  * Esta função retorna um ponteiro para todas as 
  * compras cadastradas no banco de dados.
  *
@@ -71,12 +89,29 @@ int get_qtd_all_compras();
  * banco de dados.
  */
 bool insert_compra(const Compra);
- 
+
+/**
+ * Retorna o último id cadastrado no banco
+ * 
+ * @return Último id cadastrado no banco
+ */
+int get_last_id_compra();
+
+/**
+ * Converte MYSQL_ROW para Compra
+ * 
+ * row - Variavel do tipo MYSQL_ROW
+ * 
+ * Retorno - Ponteiro para Compra
+ * 
+ */
+Compra* store_result_to_compra(MYSQL_RES *res);
+
 /**
  * Esta recebe uma Compra e atualiza os dados da 
  * compra com o respectivo id no banco de dados. 
  */
-bool update_compra(const Compra);
+//bool update_compra(const Compra); A princípio não será usada
 
 /**
  * Esta recebe uma Compra e a deleta do banco de
@@ -84,7 +119,7 @@ bool update_compra(const Compra);
  * para a exlusão, foi mantido a struct para seguir o padrão 
  * das funções anteriores. 
  */
-bool delete_compra(const Compra);
+//bool delete_compra(const Compra); A princípio não será usada
 
 /************************************************************************
 *************************************************************************
@@ -170,13 +205,23 @@ int get_qtd_all_reposicoes();
  * Esta recebe uma Reposicao e faz sua inserção no 
  * banco de dados.
  */
-bool insert_reposicao(const Reposicao);
+bool insert_reposicao(Reposicao);
+
+/**
+ * Converte MYSQL_ROW para Reposicao
+ * 
+ * row - Variavel do tipo MYSQL_ROW
+ * 
+ * Retorno - Ponteiro para Reposicao
+ * 
+ */
+Reposicao* row_to_reposicao(MYSQL_ROW row);
  
 /**
  * Esta recebe uma Reposicao e atualiza os dados da 
  * reposicao com o respectivo id no banco de dados. 
  */
-bool update_reposicao(const Reposicao);
+//bool update_reposicao(const Reposicao); A princípio não será usad
 
 /**
  * Esta recebe uma Reposicao e a deleta do banco de
@@ -184,7 +229,7 @@ bool update_reposicao(const Reposicao);
  * para a exlusão, foi mantido a struct para seguir o padrão 
  * das funções anteriores. 
  */
-bool delete_reposicao(const Reposicao);
+//bool delete_reposicao(const Reposicao); A princípio não será usada
 
 /************************************************************************
 *************************************************************************
@@ -271,10 +316,26 @@ int get_qtd_all_turnos();
 bool insert_turno(const Turno);
 
 /**
+ * Esta recebe um Turno com horario final para  
+ * registrar o horario final na tabela assim fechando o turno.
+ */
+bool fecha_turno(const Turno);
+
+/**
+ * Converte MYSQL_ROW para Turno
+ * 
+ * row - Variavel do tipo MYSQL_ROW
+ * 
+ * Retorno - Ponteiro para Turno
+ * 
+ */
+Turno* row_to_turno(MYSQL_ROW row);
+
+/**
  * Esta recebe um Turno e atualiza os dados do 
  * turno com o respectivo id no banco de dados. 
  */
-bool update_turno(const Turno);
+//bool update_turno(const Turno);
 
 /**
  * Esta função recebe um Turno e o deleta do banco de
@@ -282,7 +343,7 @@ bool update_turno(const Turno);
  * para a exlusão, foi mantido a struct para seguir o padrão 
  * das funções anteriores. 
  */
-bool delete_turno(const Turno);
+//bool delete_turno(const Turno); A princípio não será usada
 
 /************************************************************************
 *************************************************************************
@@ -365,13 +426,23 @@ int get_qtd_all_movimentaoes();
  * Esta recebe uma Movimentacao e faz sua inserção no 
  * banco de dados.
  */
-bool insert_movimentacao(const Movimentacao);
+bool insert_movimentacao(Movimentacao);
+
+/**
+ * Converte MYSQL_ROW para Movimentacao
+ * 
+ * row - Variavel do tipo MYSQL_ROW
+ * 
+ * Retorno - Ponteiro para Movimentacao
+ * 
+ */
+Movimentacao* row_to_movimentacao(MYSQL_ROW row);
 
 /**
  * Esta recebe uma Movimentacao e atualiza os dados da
  * movimentação com o respectivo id no banco de dados. 
  */
-bool update_movimentacao(const Movimentacao);
+//bool update_movimentacao(const Movimentacao); A princípio não será usada
 
 /**
  * Esta função recebe uma Movimentacao e a deleta do banco de
@@ -379,4 +450,4 @@ bool update_movimentacao(const Movimentacao);
  * para a exlusão, foi mantido a struct para seguir o padrão 
  * das funções anteriores. 
  */
-bool delete_movimentacao(const Movimentacao);
+//bool delete_movimentacao(const Movimentacao); A princípio não será usada

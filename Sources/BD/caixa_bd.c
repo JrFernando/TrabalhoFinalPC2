@@ -20,7 +20,7 @@ Caixa* find_caixa(int id){
 	char *query = "select * from Caixas where caix_id =  ;";
 	Caixa* caixa;
 	int tamanho = 0;
-	
+
 	tamanho = strlen(query) + TAM_MAX_ID;	
 	query = (char*) alocar_memoria(tamanho, sizeof(char));
 
@@ -41,18 +41,18 @@ Caixa* find_caixa(int id){
 		linhas = mysql_fetch_row(resposta);
 
 		caixa->id = atoi(linhas[0]);
-
+                
 		caixa->saldo = atof(linhas[1]);
 	} else {
 		//Descomente para debugar
-		//printf("Erro: %s\n", mysql_error(&mysql));
+    		//printf("Erro: %s\n", mysql_error(&mysql));
 		bd_close(&mysql);
 		return NULL;
 	}
 
 	mysql_free_result(resposta);
 	bd_close(&mysql);
-
+        
 	return caixa;
 } 
 
