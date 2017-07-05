@@ -36,9 +36,10 @@ Fabricante* find_fabricante(int id) {
 
 
     if ((resposta = mysql_store_result(&mysql))) {
-        fabricante = (Fabricante*) alocar_memoria(1, sizeof (Fabricante));
         linhas = mysql_fetch_row(resposta);
+        if (linhas == NULL) return NULL;
 
+        fabricante = (Fabricante*) alocar_memoria(1, sizeof (Fabricante));
         fabricante->id = atoi(linhas[0]);
 
         fabricante->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));

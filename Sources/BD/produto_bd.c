@@ -40,9 +40,10 @@ Produto* find_produto(const int id) {
 
 
     if ((resposta = mysql_store_result(&mysql))) {
-        produto = (Produto*) alocar_memoria(1, sizeof (Produto));
         linhas = mysql_fetch_row(resposta);
+        if (linhas == NULL) return NULL;
 
+        produto = (Produto*) alocar_memoria(1, sizeof (Produto));
         produto->id = atoi(linhas[0]);
 
         produto->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
@@ -275,7 +276,7 @@ Produto* find_produtos_mais_vendidos() {
     return produtos;
 }
 
-int* find_qtd_produtos_mais_vendidos(){
+int* find_qtd_produtos_mais_vendidos() {
     MYSQL mysql;
     MYSQL_RES *resposta;
     MYSQL_ROW linhas;

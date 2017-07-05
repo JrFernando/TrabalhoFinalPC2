@@ -37,9 +37,10 @@ Caixa* find_caixa(int id){
 
 
 	if( (resposta = mysql_store_result(&mysql) )){
-		caixa = (Caixa*) alocar_memoria(1, sizeof(Caixa));
 		linhas = mysql_fetch_row(resposta);
+                if(linhas == NULL) return NULL;
 
+		caixa = (Caixa*) alocar_memoria(1, sizeof(Caixa));
 		caixa->id = atoi(linhas[0]);
                 
 		caixa->saldo = atof(linhas[1]);
