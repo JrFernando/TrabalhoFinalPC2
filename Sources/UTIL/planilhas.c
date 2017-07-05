@@ -112,6 +112,7 @@ void receita_dos_caixas(Turno *vetor,int tamanho_vetor,char *nome_arquivo){
 		fprintf(file_PTR,"%d:%d:%d,",(vetor+i)->horario_inicio.tm_hour,(vetor+i)->horario_inicio.tm_min,(vetor+i)->horario_inicio.tm_sec);
 		fprintf(file_PTR,"%d:%d:%d,",(vetor+i)->horario_inicio.tm_hour,(vetor+i)->horario_inicio.tm_min,(vetor+i)->horario_inicio.tm_sec);
 		fprintf(file_PTR,"%.2f",(vetor+i)->caixa.saldo);
+		fprintf(file_PTR,"\n");
 	}
 	
 	//fechando o arquivo:
@@ -136,6 +137,7 @@ void funcionario_que_mais_venderam(Funcionario *vetor,int tamanho_vetor,char *no
 	fprintf(file_PTR,"ID do funcionario:,Nome do funcionario:,total de vendas:\n");
 	for(i=0;i<tamanho_vetor;i++,vetor_vendas++){
 		fprintf(file_PTR,"%d,%s,%d",(vetor+i)->id,(vetor+i)->nome,*vetor_vendas);
+		fprintf(file_PTR,"\n");
 	}
 	
 	//fechando o arquivo:

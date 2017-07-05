@@ -11,9 +11,9 @@
 #include "funcionario.h"
 #include "produto.h"
   
-struct {
+typedef struct {
  	Funcionario funcionario;
  	Produto produto;
  	struct tm horario;
  	int quantidade;
-} Reposicao;
+}Reposicao;

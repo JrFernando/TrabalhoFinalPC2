@@ -1,11 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include "cupom_fiscal/horario_cupom.h"
-#include "alocacao_memoria.h"
-#include "empresa_bd.h"
-#include "horario.h"
-#include "acoes_funcionario_bd.h"
-#include "cupom_fiscal/formatacao_cupom.h"
+#include "/programacao/trabalhopc2/comp_netbeans/TrabalhoFinalPC2-master/Sources/MENU/cupom_fiscal/horario_cupom.h"
+#include "/programacao/trabalhopc2/comp_netbeans/TrabalhoFinalPC2-master/Sources/UTIL/alocacao_memoria.h"
+#include "/programacao/trabalhopc2/comp_netbeans/TrabalhoFinalPC2-master/Sources/BD/empresa_bd.h"
+#include "/programacao/trabalhopc2/comp_netbeans/TrabalhoFinalPC2-master/Sources/UTIL/horario.h"
+#include "/programacao/trabalhopc2/comp_netbeans/TrabalhoFinalPC2-master/Sources/BD/acoes_funcionario_bd.h"
+#include "/programacao/trabalhopc2/comp_netbeans/TrabalhoFinalPC2-master/Sources/MENU/cupom_fiscal/formatacao_cupom.h"
 //#include "planilhas.h"
 
 
@@ -29,6 +29,7 @@ int main(){
 	int flag_caixa;
 	float valor_compra;
 	float movimentacao;
+	char procura[151];
 	Funcionario fu,*fu_PTR,fu_caixa,fu_venda;
 	Fabricante f;
 	Empresa e,*e_PTR;
@@ -98,8 +99,10 @@ int main(){
 				}while(TRUE);
 				
 				do{
-					printf("\ndigite o id do funcionario responsavel pela venda:");
+					printf("\ndigite o id do funcionario responsavel pela venda,se nao tiver vendedor-digite 0.");
 					scanf("%d",&multiuso);
+					
+					if(multiuso==0) break;
 					
 					//procurando o funcionario do id fornecido no banco.
 					if( (fu_PTR=find_funcionario(multiuso)) != NULL ){
@@ -113,7 +116,8 @@ int main(){
 				}while(TRUE);
 				
 				//colocando funcionario vendendor na struct compras:
-				co.vendedor=fu_venda;
+				if(multiuso==0) co.vendedor.id=0;
+				else co.vendedor=fu_venda;
 					
 				//primeira coisa abrir o caixa colocando dados do banco de dados na struct caixa(cuidado existe somente um caixa aqui),entao ele vai retornar o mesmo:
 				c_PTR=find_caixa(1);
@@ -233,7 +237,7 @@ int main(){
 							total_itens=total_itens+qtd_produto_caixa;
 							
 							//funcao atualizar estoque,vai ter como parametro  a quantidade_produto_caixa.
-							//criar essa função.
+							atualiza_estoque_produto(p,qtd_produto_caixa);
 							
 						}			
 								
@@ -360,9 +364,22 @@ int main(){
 						update_produto(p);
 						free(p_PTR);
 						break;
+						
 					case 5:
-						//criar a funcao de buscar por nome no banco de dados.
+						do{
+							printf("\ndigite o nome do produto que deseja procurar:");
+							scanf("\n%[^\n]s",procura);
+						
+							if( (p_PTR=find_produto_nome(procura)) != NULL){
+								printf("\nproduto encontrado");
+								break;
+							}
+							else printf("\nproduto nao achado-tente novamente");
+						}while(TRUE);
+						imprimindo_produto(p_PTR);
+						free(p_PTR);
 						break;
+						
 					case 6:
 						do{
 							printf("\ndigite o id do produto que deseja procurar ou ou digite 0-para retornar ao menu inicial.");
@@ -506,7 +523,17 @@ int main(){
 						break;
 						
 					case 5:
-						//criar a funcao para procurar por nome.
+						do{
+							printf("\ndigite o nome do funcionario que deseja procurar:");
+							scanf("\n%[^\n]s",procura);
+							
+							if( (fu_PTR=find_funcionario_nome(procura)) != NULL){
+								printf("\nfuncionario encontrado");
+								break;
+							}
+						}while(TRUE);
+						imprimindo_funcionario(fu_PTR);
+						free(fu_PTR);
 						break;
 						
 					default:
@@ -524,6 +551,7 @@ int main(){
 				printf("\n3-PARA CRIAR UMA TABELA COM TODAS AS COMPRAS REALIZADAS ATÉ O MOMENTO.");
 				printf("\n4-PARA CRIAR UMA TABELA COM OS PRODUTOS E SUAS QUANTIDADES EM ESTOQUE.");
 				printf("\n5-PARA CRIAR UMA TABELA COM OS FUNCIONÁRIOS QUE MAIS VENDERAM");
+                                printf("\n6-PARA CRIAR UMA TABELA COM AS RECEITAS DOS CAIXAS COM OS HORARIOS");
 				scanf("%d",&codigo_planilhas);
 				switch(codigo_planilhas){
 					case 1:
@@ -535,7 +563,9 @@ int main(){
 					case 4:
 						break;
 					case 5:
-						break;	
+						break;
+                                        case 6:
+                                                break;
 					default:
 						printf("\nCODIGO INVÁLIDO TENTE NOVAMENTE");
 						break;

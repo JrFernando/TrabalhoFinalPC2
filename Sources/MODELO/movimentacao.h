@@ -12,9 +12,9 @@
  #include "caixa.h"
  
   
- struct {
+typedef struct {
  	Funcionario funcionario;
  	Caixa caixa;
  	struct tm horario;
  	float valor;
- } Movimentacao;
+}Movimentacao;

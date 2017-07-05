@@ -11,9 +11,9 @@
 #include "funcionario.h"
 #include "caixa.h"
   
-struct {
+typedef struct {
  	Funcionario funcionario;
  	Caixa caixa;
  	struct tm horario_inicio;
  	struct tm horario_final;
-} Turno;
+}Turno;
