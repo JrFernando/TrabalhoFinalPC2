@@ -4,9 +4,9 @@
 #include "../UTIL/alocacao_memoria.h"
 #include "../BD/empresa_bd.h"
 #include "../UTIL/horario.h"
-#include "../BD/acoes_funcionario_bd.h"
+//#include "../BD/acoes_funcionario_bd.h"
 #include "cupom_fiscal/formatacao_cupom.h"
-//#include "planilhas.h"
+#include "../UTIL/planilhas.h"
 
 /*
 -programa que fornece o menu_principal do programa,indicando ao usuario o que ele pode fazer no programa:
@@ -29,13 +29,15 @@ int main() {
     float valor_compra;
     float movimentacao;
     char procura[151];
+    int tamanho_vetor;
+    int *vetor_PTR;
     Funcionario fu, *fu_PTR, fu_caixa, fu_venda;
     Fabricante f;
     Empresa e, *e_PTR;
     Produto p, *p_PTR;
-    Turno t;
+    Turno t,*t_PTR;
     Caixa c, *c_PTR;
-    Compra co;
+    Compra co,*co_PTR;
     Movimentacao m;
     Reposicao r;
 
@@ -321,8 +323,10 @@ int main() {
                             if (parametro_baixa_estoque >= 0) break;
 
                         } while (TRUE);
-
-                        //criar funcao para realizar tal elemento.
+                        p_PTR=find_produtos_estoque_baixo(parametro_baixa_estoque);
+                        tamanho_vetor=get_qtd_find_produtos_estoque_baixo(parametro_baixa_estoque);
+                        imprimindo_produtos_em_baixa(p_PTR,tamanho_vetor);
+                        free(p_PTR);
                         break;
 
                     case 3:
@@ -358,7 +362,7 @@ int main() {
                         break;
 
                     case 5:
-                        do {
+                        /*do {
                             printf("\ndigite o nome do produto que deseja procurar:");
                             scanf("\n%[^\n]s", procura);
 
@@ -369,8 +373,8 @@ int main() {
                         } while (TRUE);
                         imprimindo_produto(p_PTR);
                         free(p_PTR);
+                         */
                         break;
-
                     case 6:
                         do {
                             printf("\ndigite o id do produto que deseja procurar ou ou digite 0-para retornar ao menu inicial.");
@@ -513,6 +517,7 @@ int main() {
                         break;
 
                     case 5:
+                        /*
                         do {
                             printf("\ndigite o nome do funcionario que deseja procurar:");
                             scanf("\n%[^\n]s", procura);
@@ -524,11 +529,13 @@ int main() {
                         } while (TRUE);
                         imprimindo_funcionario(fu_PTR);
                         free(fu_PTR);
+                         */
                         break;
-
+                   
                     default:
                         printf("\nCODIGO INVÀLIDO TENTE NOVAMENTE");
                         break;
+                       
                 }
                 break;
 
@@ -537,25 +544,49 @@ int main() {
                 printf("\nVOCÊ ESTÁ NO MENU DE PLANILHAS ELETRONICAS.");
                 printf("\nDIGITE:");
                 printf("\n1-PARA CRIAR UMA TABELA COM OS PRODUTOS MAIS VENDIDOS.");
-                printf("\n2-PARA CRIAR UMA TABELA COM OS PRODUTOS MAIS LUCRATIVOS.");
-                printf("\n3-PARA CRIAR UMA TABELA COM TODAS AS COMPRAS REALIZADAS ATÉ O MOMENTO.");
-                printf("\n4-PARA CRIAR UMA TABELA COM OS PRODUTOS E SUAS QUANTIDADES EM ESTOQUE.");
-                printf("\n5-PARA CRIAR UMA TABELA COM OS FUNCIONÁRIOS QUE MAIS VENDERAM");
-                printf("\n6-PARA CRIAR UMA TABELA COM AS RECEITAS DOS CAIXAS COM OS HORARIOS");
+                printf("\n2-PARA CRIAR UMA TABELA COM TODAS AS COMPRAS REALIZADAS ATÉ O MOMENTO.");
+                printf("\n3-PARA CRIAR UMA TABELA COM OS PRODUTOS E SUAS QUANTIDADES EM ESTOQUE.");
+                printf("\n4-PARA CRIAR UMA TABELA COM OS FUNCIONÁRIOS QUE MAIS VENDERAM");
+                printf("\n5-PARA CRIAR UMA TABELA COM AS RECEITAS DOS CAIXAS COM OS HORARIOS");
                 scanf("%d", &codigo_planilhas);
-                switch (codigo_planilhas) {
+                switch (codigo_planilhas){
                     case 1:
+                        p_PTR=find_produtos_mais_vendidos();
+                        vetor_PTR=find_qtd_produtos_mais_vendidos();
+                        tamanho_vetor=get_qtd_find_produtos_mais_vendidos();
+                        produtos_mais_vendidos(p_PTR,tamanho_vetor,vetor_PTR,"Produtos_mais_vendidos.csv");
+                        free(p_PTR);
+                        printf("\nplanilha gerada no arquivo do programa.");
                         break;
+                        
                     case 2:
+                        co_PTR=get_all_compras();
+                        tamanho_vetor=get_qtd_all_compras();
+                        compras_realizadas(co_PTR,tamanho_vetor,"compras_momento.csv");
+                        free(co_PTR);
+                         printf("\nplanilha gerada no arquivo do programa.");
                         break;
+                        
                     case 3:
+                        p_PTR=get_all_produtos();
+                        tamanho_vetor=get_qtd_all_produtos();
+                        produtos_e_estoque(p_PTR,tamanho_vetor,"produtos_estoque.csv");
+                        free(p_PTR);
+                         printf("\nplanilha gerada no arquivo do programa.");
                         break;
+                       
                     case 4:
+                        printf("\nplanilha gerada no arquivo do programa.");
                         break;
+                        
                     case 5:
+                        t_PTR=get_all_turnos();
+                        tamanho_vetor=get_qtd_all_turnos();
+                        receita_dos_caixas(t_PTR,tamanho_vetor,"receita dos caixas");
+                        free(t_PTR);
+                         printf("\nplanilha gerada no arquivo do programa.");
                         break;
-                    case 6:
-                        break;
+                        
                     default:
                         printf("\nCODIGO INVÁLIDO TENTE NOVAMENTE");
                         break;

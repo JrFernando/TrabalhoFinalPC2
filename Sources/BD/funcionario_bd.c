@@ -66,7 +66,7 @@ Funcionario* find_funcionario(int id) {
     return funcionario;
 }
 
-Funcionario* find_funcionario_nome(const char* nome) {
+/*Funcionario* find_funcionario_nome(const char* nome) {
     MYSQL mysql;
     MYSQL_RES *resposta;
     MYSQL_ROW linhas;
@@ -145,6 +145,7 @@ int get_qtd_find_funcionario_nome(const char* nome) {
 
     return quantidade;
 }
+ */
 
 Funcionario* get_all_funcionarios() {
     MYSQL mysql;

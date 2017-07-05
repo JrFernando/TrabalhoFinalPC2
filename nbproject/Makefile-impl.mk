@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=TrabalhoFinalPC2
+PROJECTNAME=TrabalhoFinalPC2-master
 
 # Active Configuration
 DEFAULTCONF=Debug

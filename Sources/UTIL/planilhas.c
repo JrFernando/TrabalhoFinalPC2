@@ -1,11 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "horario.h"
-#include "horario_cupom.h"
+#include "../MENU/cupom_fiscal/horario_cupom.h"
 #include "planilhas.h"
 
 
-void produtos_mais_vendidos(Produto *vetor,int tamanho_vetor,char *nome_arquivo){
+void produtos_mais_vendidos(Produto *vetor,int tamanho_vetor,int *p_vendidos,char *nome_arquivo){
 	int i;
 	FILE* file_PTR;
 	
@@ -17,8 +17,8 @@ void produtos_mais_vendidos(Produto *vetor,int tamanho_vetor,char *nome_arquivo)
 	
 	fprintf(file_PTR,"Produtos mais vendidos:\n");
 	fprintf(file_PTR,"Nome do Produto,Id do produto,total de vendas\n");
-	for(i=0;i<tamanho_vetor;i++){
-		fprintf(file_PTR,"%s,%d,%d",(vetor+i)->nome,(vetor+i)->id,(vetor+i)->quantidade);
+	for(i=0;i<tamanho_vetor;i++,p_vendidos++){
+		fprintf(file_PTR,"%s,%d,%d",(vetor+i)->nome,(vetor+i)->id,*p_vendidos);
 		fprintf(file_PTR,"\n");
 	}
 	
@@ -119,9 +119,8 @@ void receita_dos_caixas(Turno *vetor,int tamanho_vetor,char *nome_arquivo){
 	fclose(file_PTR);	
 }
 
-void funcionario_que_mais_venderam(Funcionario *vetor,int tamanho_vetor,char *nome_arquivo){
+void funcionario_que_mais_venderam(Funcionario *vetor,int tamanho_vetor,int *vetor_vendas,char *nome_arquivo){
 	float vendas_funcionario;
-	int* vetor_vendas;
 	int i;
 	FILE *file_PTR;
 	

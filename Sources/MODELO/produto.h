@@ -24,3 +24,4 @@ typedef struct {
 Produto lendo_produto(void);
 void lendo_produto_para_atualizar(Produto *);
 void imprimindo_produto(Produto *);
+void imprimindo_produtos_em_baixa(Produto *,int );

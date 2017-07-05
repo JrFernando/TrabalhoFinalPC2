@@ -43,17 +43,17 @@ OBJECTFILES= \
 	${OBJECTDIR}/Sources/BD/funcionario_bd.o \
 	${OBJECTDIR}/Sources/BD/grupo_bd.o \
 	${OBJECTDIR}/Sources/BD/produto_bd.o \
-	${OBJECTDIR}/Sources/BD/teste.o \
 	${OBJECTDIR}/Sources/MENU/cupom_fiscal/formatacao_cupom.o \
 	${OBJECTDIR}/Sources/MENU/cupom_fiscal/horario_cupom.o \
 	${OBJECTDIR}/Sources/MENU/menu.o \
-	${OBJECTDIR}/Sources/MODELO/empresa_funcoes.o \
-	${OBJECTDIR}/Sources/MODELO/fabricante_funcoes.o \
-	${OBJECTDIR}/Sources/MODELO/funcionario_funcoes.o \
-	${OBJECTDIR}/Sources/MODELO/produtos_funcoes.o \
+	${OBJECTDIR}/Sources/MODELO/empresa.o \
+	${OBJECTDIR}/Sources/MODELO/fabricante.o \
+	${OBJECTDIR}/Sources/MODELO/funcionario.o \
+	${OBJECTDIR}/Sources/MODELO/produto.o \
 	${OBJECTDIR}/Sources/UTIL/alocacao_memoria.o \
 	${OBJECTDIR}/Sources/UTIL/horario.o \
-	${OBJECTDIR}/Sources/UTIL/my_string.o
+	${OBJECTDIR}/Sources/UTIL/my_string.o \
+	${OBJECTDIR}/Sources/UTIL/planilhas.o
 
 
 # C Compiler Flags
@@ -74,11 +74,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2-master
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2-master: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2 ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2-master ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Sources/BD/acoes_funcionario_bd.o: Sources/BD/acoes_funcionario_bd.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/BD
@@ -120,11 +120,6 @@ ${OBJECTDIR}/Sources/BD/produto_bd.o: Sources/BD/produto_bd.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/BD/produto_bd.o Sources/BD/produto_bd.c
 
-${OBJECTDIR}/Sources/BD/teste.o: Sources/BD/teste.c
-	${MKDIR} -p ${OBJECTDIR}/Sources/BD
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/BD/teste.o Sources/BD/teste.c
-
 ${OBJECTDIR}/Sources/MENU/cupom_fiscal/formatacao_cupom.o: Sources/MENU/cupom_fiscal/formatacao_cupom.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/MENU/cupom_fiscal
 	${RM} "$@.d"
@@ -140,25 +135,25 @@ ${OBJECTDIR}/Sources/MENU/menu.o: Sources/MENU/menu.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/MENU/menu.o Sources/MENU/menu.c
 
-${OBJECTDIR}/Sources/MODELO/empresa_funcoes.o: Sources/MODELO/empresa_funcoes.c
+${OBJECTDIR}/Sources/MODELO/empresa.o: Sources/MODELO/empresa.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/MODELO
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/MODELO/empresa_funcoes.o Sources/MODELO/empresa_funcoes.c
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/MODELO/empresa.o Sources/MODELO/empresa.c
 
-${OBJECTDIR}/Sources/MODELO/fabricante_funcoes.o: Sources/MODELO/fabricante_funcoes.c
+${OBJECTDIR}/Sources/MODELO/fabricante.o: Sources/MODELO/fabricante.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/MODELO
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/MODELO/fabricante_funcoes.o Sources/MODELO/fabricante_funcoes.c
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/MODELO/fabricante.o Sources/MODELO/fabricante.c
 
-${OBJECTDIR}/Sources/MODELO/funcionario_funcoes.o: Sources/MODELO/funcionario_funcoes.c
+${OBJECTDIR}/Sources/MODELO/funcionario.o: Sources/MODELO/funcionario.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/MODELO
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/MODELO/funcionario_funcoes.o Sources/MODELO/funcionario_funcoes.c
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/MODELO/funcionario.o Sources/MODELO/funcionario.c
 
-${OBJECTDIR}/Sources/MODELO/produtos_funcoes.o: Sources/MODELO/produtos_funcoes.c
+${OBJECTDIR}/Sources/MODELO/produto.o: Sources/MODELO/produto.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/MODELO
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/MODELO/produtos_funcoes.o Sources/MODELO/produtos_funcoes.c
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/MODELO/produto.o Sources/MODELO/produto.c
 
 ${OBJECTDIR}/Sources/UTIL/alocacao_memoria.o: Sources/UTIL/alocacao_memoria.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/UTIL
@@ -174,6 +169,11 @@ ${OBJECTDIR}/Sources/UTIL/my_string.o: Sources/UTIL/my_string.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/UTIL
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/UTIL/my_string.o Sources/UTIL/my_string.c
+
+${OBJECTDIR}/Sources/UTIL/planilhas.o: Sources/UTIL/planilhas.c
+	${MKDIR} -p ${OBJECTDIR}/Sources/UTIL
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/UTIL/planilhas.o Sources/UTIL/planilhas.c
 
 # Subprojects
 .build-subprojects:

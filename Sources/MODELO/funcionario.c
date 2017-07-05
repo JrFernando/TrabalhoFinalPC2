@@ -7,9 +7,9 @@
 */
 #include<stdio.h>
 #include "funcionario.h"
-#include "alocacao_memoria.h"
+#include "../UTIL/alocacao_memoria.h"
 #include<string.h>
-#include "my_bool.h"
+#include "../UTIL/my_bool.h"
 
 
 Funcionario lendo_funcionario(void){

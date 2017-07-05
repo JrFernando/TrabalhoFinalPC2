@@ -11,8 +11,8 @@
 #include<stdio.h>
 #include "produto.h"
 #include<string.h>
-#include "alocacao_memoria.h"
-#include "my_bool.h"
+#include "../UTIL/alocacao_memoria.h"
+#include "../UTIL/my_bool.h"
 
 
 
@@ -141,5 +141,18 @@ void lendo_produto_para_atualizar(Produto *p){
 	p->nome=realocar_memoria(p->nome,strlen(p->nome),sizeof(char));
 	p->fabricante.nome=realocar_memoria(p->fabricante.nome,strlen(p->fabricante.nome),sizeof(char));
 		
-}		
+}
+
+void imprimindo_produtos_em_baixa(Produto *p,int tamanho_vetor){
+    int i;
+    
+    printf("\nprodutos em baixa no estoque:");
+    for(i=0;i<tamanho_vetor;i++){
+        printf("\nid do produto:%d",(p+i)->id);
+	printf("\nnome do produto:%s",(p+i)->nome);
+	printf("\nquantidade do produto em estoque:%d",(p+i)->quantidade);
+	
+        
+    } 
+}
 

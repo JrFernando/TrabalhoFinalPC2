@@ -8,7 +8,7 @@
  * @date 27/06/2017
 */
 #include "fabricante.h"
-#include "alocacao_memoria.h"
+#include "../UTIL/alocacao_memoria.h"
 #include<string.h>
 
 

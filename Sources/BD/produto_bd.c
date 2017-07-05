@@ -67,7 +67,7 @@ Produto* find_produto(const int id) {
     return produto;
 }
 
-Produto* find_produto_nome(const char* nome) {
+/*Produto* find_produto_nome(const char* nome) {
     MYSQL mysql;
     MYSQL_RES *resposta;
     MYSQL_ROW linhas;
@@ -122,6 +122,7 @@ Produto* find_produto_nome(const char* nome) {
     return produtos;
 }
 
+
 int get_qtd_find_produto_nome(const char* nome) {
     MYSQL mysql;
     MYSQL_RES *resposta;
@@ -148,7 +149,8 @@ int get_qtd_find_produto_nome(const char* nome) {
     bd_close(&mysql);
 
     return quantidade;
-}
+}*/
+
 
 Produto* find_produtos_estoque_baixo(int n) {
     MYSQL mysql;

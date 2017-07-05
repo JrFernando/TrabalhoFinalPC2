@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include "empresa.h"
-#include "alocacao_memoria.h"
+#include "../UTIL/alocacao_memoria.h"
 #include<string.h>
 
 Empresa lendo_empresa(){
