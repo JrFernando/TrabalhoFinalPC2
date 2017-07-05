@@ -39,9 +39,10 @@ Funcionario* find_funcionario(int id) {
 
 
     if ((resposta = mysql_store_result(&mysql))) {
-        funcionario = (Funcionario*) alocar_memoria(1, sizeof (Funcionario));
         linhas = mysql_fetch_row(resposta);
-
+        if(linhas == NULL) return NULL;
+        
+        funcionario = (Funcionario*) alocar_memoria(1, sizeof (Funcionario));
         funcionario->id = atoi(linhas[0]);
 
         funcionario->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
@@ -66,7 +67,7 @@ Funcionario* find_funcionario(int id) {
     return funcionario;
 }
 
-/*Funcionario* find_funcionario_nome(const char* nome) {
+Funcionario* find_funcionario_nome(const char* nome) {
     MYSQL mysql;
     MYSQL_RES *resposta;
     MYSQL_ROW linhas;
@@ -78,7 +79,7 @@ Funcionario* find_funcionario(int id) {
     tamanho = strlen(query) + TAM_MAX_NOME;
     query = (char*) alocar_memoria(tamanho, sizeof (char));
 
-    sprintf(query, "select * from Funcionarios where func_nome like \"%d%\";", nome);
+    sprintf(query, "select * from Funcionarios where func_nome like \"%s%\";", nome);
 
     if (!bd_open(&mysql)) return NULL;
 
@@ -91,9 +92,10 @@ Funcionario* find_funcionario(int id) {
 
 
     if ((resposta = mysql_store_result(&mysql))) {
-        funcionario = (Funcionario*) alocar_memoria(1, sizeof (Funcionario));
         linhas = mysql_fetch_row(resposta);
+        if(linhas == NULL) return NULL;
 
+        funcionario = (Funcionario*) alocar_memoria(1, sizeof (Funcionario));
         funcionario->id = atoi(linhas[0]);
 
         funcionario->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
@@ -127,7 +129,7 @@ int get_qtd_find_funcionario_nome(const char* nome) {
     tamanho = strlen(query) + TAM_MAX_NOME;
     query = (char*) alocar_memoria(tamanho, sizeof (char));
 
-    sprintf(query, "select * from Funcionarios where func_nome like \"%d%\";", nome);
+    sprintf(query, "select * from Funcionarios where func_nome like \"%s%\";", nome);
 
     if (!bd_open(&mysql)) return -1;
 
@@ -145,7 +147,7 @@ int get_qtd_find_funcionario_nome(const char* nome) {
 
     return quantidade;
 }
- */
+ 
 
 Funcionario* get_all_funcionarios() {
     MYSQL mysql;
