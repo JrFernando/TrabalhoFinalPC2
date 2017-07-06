@@ -40,9 +40,10 @@ Produto* find_produto(const int id) {
 
 
     if ((resposta = mysql_store_result(&mysql))) {
-        produto = (Produto*) alocar_memoria(1, sizeof (Produto));
         linhas = mysql_fetch_row(resposta);
+        if (linhas == NULL) return NULL;
 
+        produto = (Produto*) alocar_memoria(1, sizeof (Produto));
         produto->id = atoi(linhas[0]);
 
         produto->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
@@ -66,91 +67,6 @@ Produto* find_produto(const int id) {
 
     return produto;
 }
-/*
-Produto* find_produto_nome(const char* nome) {
-    MYSQL mysql;
-    MYSQL_RES *resposta;
-    MYSQL_ROW linhas;
-    char *query = "select * from Produtos where prod_nome like  %;";
-    Produto *produtos, *temp;
-    int tamanho = 0, quantidade;
-
-    tamanho = strlen(query) + TAM_MAX_NOME;
-    query = (char*) alocar_memoria(tamanho, sizeof (char));
-
-    sprintf(query, "select * from Produtos where prod_nome like \"%s%\";", nome);
-
-    if (!bd_open(&mysql)) return NULL;
-
-    if (mysql_query(&mysql, query)) {
-        //Descomente para debugar
-        printf("Erro: %s\n", mysql_error(&mysql));
-        bd_close(&mysql);
-        return NULL;
-    }
-
-
-    if ((resposta = mysql_store_result(&mysql))) {
-        quantidade = mysql_num_rows(resposta);
-        produtos = (Produto*) alocar_memoria(quantidade, sizeof (Produto));
-        temp = produtos;
-        while ((linhas = mysql_fetch_row(resposta)) != NULL) {
-            temp->id = atoi(linhas[0]);
-
-            temp->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
-            strcpy(temp->nome, linhas[1]);
-
-            temp->quantidade = atoi(linhas[2]);
-            temp->preco_compra = atof(linhas[3]);
-            temp->preco_venda = atof(linhas[4]);
-
-            temp->fabricante = *(find_fabricante(atoi(linhas[5])));
-
-            temp++;
-        }
-
-    } else {
-        //Descomente para debugar
-        printf("Erro: %s\n", mysql_error(&mysql));
-        bd_close(&mysql);
-        return NULL;
-    }
-
-    mysql_free_result(resposta);
-    bd_close(&mysql);
-
-    return produtos;
-}
-
-
-int get_qtd_find_produto_nome(const char* nome) {
-    MYSQL mysql;
-    MYSQL_RES *resposta;
-    char *query = "select * from Produtos where prod_nome like  %;";
-    int quantidade = -1, tamanho;
-
-    if (!bd_open(&mysql)) return -1;
-
-    tamanho = strlen(query) + TAM_MAX_NOME;
-    query = (char*) alocar_memoria(tamanho, sizeof (char));
-
-    sprintf(query, "select * from Produtos where prod_nome like \"%s%\";", nome);
-
-    if (mysql_query(&mysql, query)) {
-        //Descomente para debugar
-        printf("Erro: %s\n", mysql_error(&mysql));
-        bd_close(&mysql);
-        return -1;
-    }
-
-    if ((resposta = mysql_store_result(&mysql))) quantidade = mysql_num_rows(resposta);
-
-    mysql_free_result(resposta);
-    bd_close(&mysql);
-
-    return quantidade;
-}
-*/
 
 Produto* find_produtos_estoque_baixo(int n) {
     MYSQL mysql;
@@ -275,7 +191,7 @@ Produto* find_produtos_mais_vendidos() {
     return produtos;
 }
 
-int* find_qtd_produtos_mais_vendidos(){
+int* find_qtd_produtos_mais_vendidos() {
     MYSQL mysql;
     MYSQL_RES *resposta;
     MYSQL_ROW linhas;
@@ -342,7 +258,7 @@ Produto* get_all_produtos() {
     MYSQL mysql;
     MYSQL_RES *resposta;
     MYSQL_ROW linhas;
-    char *query = "select * from Produtos;";
+    char *query = "select * from Produtos order by prod_quantidade desc;";
     Produto *produtos, *temp;
     int quantidade;
 

@@ -13,121 +13,122 @@
 
 #define TAM_MAX_ID 4
 
-Grupo* find_grupo(int id){
-	MYSQL mysql;
-	MYSQL_RES *resposta;
-	MYSQL_ROW linhas;
-	char *query = "select * from Grupos where grup_id =  ;";
-	Grupo *grupo;
-	int tamanho = 0;
-	
-	tamanho = strlen(query) + TAM_MAX_ID;	
-	query = (char*) alocar_memoria(tamanho, sizeof(char));
+Grupo* find_grupo(int id) {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    MYSQL_ROW linhas;
+    char *query = "select * from Grupos where grup_id =  ;";
+    Grupo *grupo;
+    int tamanho = 0;
 
-	sprintf(query, "select * from Grupos where grup_id = %d;", id);
+    tamanho = strlen(query) + TAM_MAX_ID;
+    query = (char*) alocar_memoria(tamanho, sizeof (char));
 
-	if(! bd_open(&mysql) ) return NULL;
+    sprintf(query, "select * from Grupos where grup_id = %d;", id);
 
-	if(mysql_query(&mysql, query)){
-		//Descomente para debugar
-		//printf("Erro: %s\n", mysql_error(&mysql));
-		bd_close(&mysql);
-		return NULL;
-	}
+    if (!bd_open(&mysql)) return NULL;
+
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
 
 
-	if( (resposta = mysql_store_result(&mysql) )){
-		grupo = (Grupo*) alocar_memoria(1, sizeof(Grupo));
-		linhas = mysql_fetch_row(resposta);
+    if ((resposta = mysql_store_result(&mysql))) {
+        linhas = mysql_fetch_row(resposta);
+        if (linhas == NULL) return NULL;
 
-		grupo->id = atoi(linhas[0]);
+        grupo = (Grupo*) alocar_memoria(1, sizeof (Grupo));
+        grupo->id = atoi(linhas[0]);
 
-		grupo->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof(char));
-		strcpy(grupo->nome, linhas[1]);
+        grupo->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
+        strcpy(grupo->nome, linhas[1]);
 
-		grupo->descricao = (char*) alocar_memoria(strlen(linhas[2]), sizeof(char));
-		strcpy(grupo->descricao, linhas[2]);
+        grupo->descricao = (char*) alocar_memoria(strlen(linhas[2]), sizeof (char));
+        strcpy(grupo->descricao, linhas[2]);
 
-	} else {
-		//Descomente para debugar
-		//printf("Erro: %s\n", mysql_error(&mysql));
-		bd_close(&mysql);
-		return NULL;
-	}
+    } else {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
 
-	mysql_free_result(resposta);
-	bd_close(&mysql);
+    mysql_free_result(resposta);
+    bd_close(&mysql);
 
-	return grupo;
+    return grupo;
 }
 
-Grupo* get_all_grupos(){
-	MYSQL mysql;
-	MYSQL_RES *resposta;
-	MYSQL_ROW linhas;
-	char *query = "select * from Grupos;";
-	Grupo *grupo, *temp;
-	int quantidade;
+Grupo* get_all_grupos() {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    MYSQL_ROW linhas;
+    char *query = "select * from Grupos;";
+    Grupo *grupo, *temp;
+    int quantidade;
 
-	if(! bd_open(&mysql) ) return NULL;
+    if (!bd_open(&mysql)) return NULL;
 
-	if(mysql_query(&mysql, query)){
-		//Descomente para debugar
-		//printf("Erro: %s\n", mysql_error(&mysql));
-		bd_close(&mysql);
-		return NULL;
-	}
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
 
-	if( (resposta = mysql_store_result(&mysql) )){
-		quantidade = mysql_num_rows(resposta);
+    if ((resposta = mysql_store_result(&mysql))) {
+        quantidade = mysql_num_rows(resposta);
 
-		grupo = (Grupo*) alocar_memoria(quantidade, sizeof(Grupo));
-		
-		temp = grupo;
-		while((linhas = mysql_fetch_row(resposta)) != NULL){
-			temp->id = atoi(linhas[0]);
+        grupo = (Grupo*) alocar_memoria(quantidade, sizeof (Grupo));
 
-			temp->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof(char));
-			strcpy(temp->nome, linhas[1]);
+        temp = grupo;
+        while ((linhas = mysql_fetch_row(resposta)) != NULL) {
+            temp->id = atoi(linhas[0]);
 
-			temp->descricao = (char*) alocar_memoria(strlen(linhas[2]), sizeof(char));
-			strcpy(temp->descricao, linhas[2]);
+            temp->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
+            strcpy(temp->nome, linhas[1]);
 
-			temp++;
-		}
-	
-	} else {
-		//Descomente para debugar
-		//printf("Erro: %s\n", mysql_error(&mysql));
-		bd_close(&mysql);
-		return NULL;
-	}
+            temp->descricao = (char*) alocar_memoria(strlen(linhas[2]), sizeof (char));
+            strcpy(temp->descricao, linhas[2]);
 
-	mysql_free_result(resposta);
-	bd_close(&mysql);
+            temp++;
+        }
 
-	return grupo;
+    } else {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+    mysql_free_result(resposta);
+    bd_close(&mysql);
+
+    return grupo;
 }
 
-int get_qtd_all_grupos(){
-	MYSQL mysql;
-	MYSQL_RES *resposta;
-	char *query = "select * from Grupos;";
-	int quantidade = -1;
+int get_qtd_all_grupos() {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    char *query = "select * from Grupos;";
+    int quantidade = -1;
 
-	if(! bd_open(&mysql) ) return -1;
+    if (!bd_open(&mysql)) return -1;
 
-	if(mysql_query(&mysql, query)){
-		//Descomente para debugar
-		//printf("Erro: %s\n", mysql_error(&mysql));
-		bd_close(&mysql);
-		return -1;
-	}
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return -1;
+    }
 
-	if( (resposta = mysql_store_result(&mysql) )) quantidade = mysql_num_rows(resposta);
+    if ((resposta = mysql_store_result(&mysql))) quantidade = mysql_num_rows(resposta);
 
-	mysql_free_result(resposta);
-	bd_close(&mysql);
+    mysql_free_result(resposta);
+    bd_close(&mysql);
 
-	return quantidade;
+    return quantidade;
 }
