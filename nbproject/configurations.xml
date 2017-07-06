@@ -118,6 +118,12 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <commandLine>-lmysqlclient</commandLine>
+        </cTool>
+        <linkerTool>
+          <commandLine>-lmysqlclient</commandLine>
+        </linkerTool>
       </compileType>
       <item path="Documentos/DocumentoFinal.pdf" ex="false" tool="3" flavor2="0">
       </item>

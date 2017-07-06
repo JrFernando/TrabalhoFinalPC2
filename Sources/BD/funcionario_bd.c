@@ -66,7 +66,7 @@ Funcionario* find_funcionario(int id) {
 
     return funcionario;
 }
-
+/*
 Funcionario* find_funcionario_nome(const char* nome) {
     MYSQL mysql;
     MYSQL_RES *resposta;
@@ -79,7 +79,7 @@ Funcionario* find_funcionario_nome(const char* nome) {
     tamanho = strlen(query) + TAM_MAX_NOME;
     query = (char*) alocar_memoria(tamanho, sizeof (char));
 
-    sprintf(query, "select * from Funcionarios where func_nome like \"%s%\";", nome);
+    sprintf(query, "select * from Funcionarios where func_nome like \" %s% \";", nome);
 
     if (!bd_open(&mysql)) return NULL;
 
@@ -129,7 +129,7 @@ int get_qtd_find_funcionario_nome(const char* nome) {
     tamanho = strlen(query) + TAM_MAX_NOME;
     query = (char*) alocar_memoria(tamanho, sizeof (char));
 
-    sprintf(query, "select * from Funcionarios where func_nome like \"%s%\";", nome);
+    sprintf(query, "select * from Funcionarios where func_nome like \"%s% \";", nome);
 
     if (!bd_open(&mysql)) return -1;
 
@@ -146,7 +146,7 @@ int get_qtd_find_funcionario_nome(const char* nome) {
     bd_close(&mysql);
 
     return quantidade;
-}
+}*/
  
 
 Funcionario* get_all_funcionarios() {

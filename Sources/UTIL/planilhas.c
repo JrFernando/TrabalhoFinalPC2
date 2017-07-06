@@ -26,7 +26,7 @@ void produtos_mais_vendidos(Produto *vetor,int tamanho_vetor,int *p_vendidos,cha
 	fclose(file_PTR);
 }
 
-void produtos_mais_lucrativos(Produto *vetor,int tamanho_vetor,char *nome_arquivo){
+void produtos_mais_lucrativos(Produto *vetor,int tamanho_vetor,float *p_vendas,char *nome_arquivo){
 	int i;
 	FILE* file_PTR;
 	
@@ -38,8 +38,8 @@ void produtos_mais_lucrativos(Produto *vetor,int tamanho_vetor,char *nome_arquiv
 	
 	fprintf(file_PTR,"Produtos mais lucrativos:\n");
 	fprintf(file_PTR,"Nome do Produto,Id do produto,faturamento\n");
-	for(i=0;i<tamanho_vetor;i++){
-		fprintf(file_PTR,"%s,%d,%d",(vetor+i)->nome,(vetor+i)->id,(vetor+i)->quantidade);
+	for(i=0;i<tamanho_vetor;i++,p_vendas++){
+		fprintf(file_PTR,"%s,%d,%.2f",(vetor+i)->nome,(vetor+i)->id,*p_vendas);
 		fprintf(file_PTR,"\n");
 	}
 	

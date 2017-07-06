@@ -57,7 +57,7 @@ OBJECTFILES= \
 
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-lmysqlclient
 
 # CC Compiler Flags
 CCFLAGS=
@@ -78,7 +78,7 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2-master: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2-master ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2-master ${OBJECTFILES} ${LDLIBSOPTIONS} -lmysqlclient
 
 ${OBJECTDIR}/Sources/BD/acoes_funcionario_bd.o: Sources/BD/acoes_funcionario_bd.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/BD

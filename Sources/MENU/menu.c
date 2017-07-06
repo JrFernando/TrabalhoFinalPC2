@@ -19,7 +19,7 @@ int main() {
     int codigo_funcionario;
     int codigo_planilhas;
     int parametro_baixa_estoque;
-    int multiuso;
+    int multiuso,multiuso1;
     int acesso_compra;
     int codigo_acesso, acesso_caixa;
     int id_produto_caixa;
@@ -31,9 +31,9 @@ int main() {
     char procura[151];
     int tamanho_vetor;
     int *vetor_PTR;
-    Funcionario fu, *fu_PTR, fu_caixa, fu_venda;
+    Funcionario fu, *fu_PTR, fu_caixa,fu_venda;
     Fabricante f;
-    Empresa e, *e_PTR;
+    Empresa e,*e_PTR;
     Produto p, *p_PTR;
     Turno t,*t_PTR;
     Caixa c, *c_PTR;
@@ -41,10 +41,11 @@ int main() {
     Movimentacao m;
     Reposicao r;
 
-
+    
+    
     //procurar no banco de dados,se nao tem o cadastro da empresa,cadastrar a propria empresa e colocar no banco de dados:
     if (!(e_PTR = find_empresa())) {
-        printf("\nBEM VINDO AO MENU INICIAL DO PROGRAMA,NESSE MOMENTO VAMOS PEDIR ALGUMAS INFORMAÇÕES DA SUA EMPRESA ESSENCIAIS PARA O FUNCIONAMENTO DO PROGRAMA");
+        printf("\nBEM VINDO AO MENU INICIAL DO PROGRAMA,NESSE MOMENTO VAMOS PEDIR ALGUMAS INFORMAÇÕES DA SUA EMPRESA ESSENCIAIS PARA O FUNCIONAMENTO DO PROGRAMA.\n");
         e = lendo_empresa();
 
         //inserindo struct empresa no banco de dados:
@@ -83,40 +84,41 @@ int main() {
                 //checar aqui se tem produto e funcionario cadastrado no programa.
 
                 //pegando os dados do funcionario(caixa);
-                do {
+                do{
                     printf("\ndigite o id do funcionario responsável pelo caixa:");
                     scanf("%d", &multiuso);
 
                     //procurando o funcionario do id fornecido no banco:
-                    if ((fu_PTR = find_funcionario(multiuso)) != NULL) {
+                    if( (fu_PTR = find_funcionario(multiuso)) != NULL){
                         printf("\nFUNCIONARIO ENCONTRADO COM SUCESSO");
-                        fu_caixa = *fu_PTR;
+                        fu_caixa =*fu_PTR;
                         free(fu_PTR);
                         break;
-                    } else printf("\nid não encontrado,tente novamente");
+                    }else printf("\nid não encontrado,tente novamente");
 
-                } while (TRUE);
-
-                do {
-                    printf("\ndigite o id do funcionario responsavel pela venda,se nao tiver vendedor-digite 0.");
-                    scanf("%d", &multiuso);
-
-                    if (multiuso == 0) break;
+                }while (TRUE);
+       
+                do{
+                    printf("\ndigite o id do funcionario responsavel pela venda,se nao tiver vendedor,senao digite-0.");
+                    scanf("\n%d",&multiuso);
+                    
+                    if(multiuso==0) break;
 
                     //procurando o funcionario do id fornecido no banco.
-                    if ((fu_PTR = find_funcionario(multiuso)) != NULL) {
+                    if ( (fu_PTR = find_funcionario(multiuso)) != NULL) {
                         printf("\nFUNCIONARIO ENCONTRADO COM SUCESSO");
-                        fu_venda = *fu_PTR;
+                        fu_venda =*fu_PTR;
                         free(fu_PTR);
                         break;
-                    } else printf("\nid nao encontrado,tente novamente");
+                    }else printf("\nid nao encontrado,tente novamente");
 
-                } while (TRUE);
-
+                }while(TRUE);
+                
+         
                 //colocando funcionario vendendor na struct compras:
                 if (multiuso == 0) co.vendedor.id = 0;
                 else co.vendedor = fu_venda;
-
+                printf("oi");
                 //primeira coisa abrir o caixa colocando dados do banco de dados na struct caixa(cuidado existe somente um caixa aqui),entao ele vai retornar o mesmo:
                 c_PTR = find_caixa(1);
                 c = *c_PTR;
@@ -253,7 +255,6 @@ int main() {
                     }
 
                     //inserindo caixa e atualizacoes:
-                    c.saldo = c.saldo + valor_compra;
                     atualiza_saldo_caixa(c);
 
                 } while (TRUE);
@@ -268,7 +269,7 @@ int main() {
                 }
 
                 //entrando na tela de movimentacao:
-                printf("\ndeseja fazer uma movimentação de dinheiro no caixa,se sim:digite-1 se sim,senao digite-2");
+                printf("\ndeseja fazer uma movimentação de dinheiro no caixa,se sim:digite-1 se sim,senao digite-2:");
                 scanf("%d", &multiuso);
 
                 if (multiuso == 1) {
@@ -317,7 +318,7 @@ int main() {
 
                     case 2:
                         do {
-                            printf("\nQual a quantidade considerada baixa no estoque");
+                            printf("\nQual a quantidade considerada baixa no estoque:");
                             scanf("%d", &parametro_baixa_estoque);
 
                             if (parametro_baixa_estoque >= 0) break;
@@ -331,7 +332,7 @@ int main() {
 
                     case 3:
                         do {
-                            printf("\ndigite o id do produto que deseja excluir do estoque.");
+                            printf("\ndigite o id do produto que deseja excluir do estoque:");
                             scanf("%d", &multiuso);
 
                             if ((p_PTR = find_produto(multiuso)) != NULL) {
@@ -343,11 +344,12 @@ int main() {
 
                         } while (TRUE);
                         delete_produto(p);
+                        printf("\nproduto excluido com sucesso");
                         break;
 
                     case 4:
                         do {
-                            printf("\nDigite o id do produto que deseja atualizar seu dados");
+                            printf("\nDigite o id do produto que deseja atualizar seu dados:");
                             scanf("%d", &multiuso);
 
                             if ((p_PTR = find_produto(multiuso)) != NULL) {
@@ -362,7 +364,8 @@ int main() {
                         break;
 
                     case 5:
-                        /*do {
+                        /*
+                        do {
                             printf("\ndigite o nome do produto que deseja procurar:");
                             scanf("\n%[^\n]s", procura);
 
@@ -373,11 +376,11 @@ int main() {
                         } while (TRUE);
                         imprimindo_produto(p_PTR);
                         free(p_PTR);
-                         */
                         break;
+                       */ 
                     case 6:
                         do {
-                            printf("\ndigite o id do produto que deseja procurar ou ou digite 0-para retornar ao menu inicial.");
+                            printf("\ndigite o id do produto que deseja procurar ou ou digite 0-para retornar ao menu inicial:");
                             scanf("%d", &multiuso);
 
                             if (multiuso == 0) break;
@@ -402,7 +405,7 @@ int main() {
 
                         //preenchendo a struct reposição e cadastrando a mesma no banco de dados:
                         do {
-                            printf("\nDigite o id do funcionario que vai fazer a reposição ou mudança de quantidade do produto no estoque");
+                            printf("\nDigite o id do funcionario que vai fazer a reposição ou mudança de quantidade do produto no estoque:");
                             scanf("%d", &multiuso);
                             if ((fu_PTR = find_funcionario(multiuso)) != NULL) {
                                 printf("\nfuncionario encontrado com sucesso.");
@@ -416,7 +419,7 @@ int main() {
                         r.funcionario = fu;
 
                         do {
-                            printf("\nDigite o id do produto que vai fazer a reposição ou mudança de quantidade do produto no estoque");
+                            printf("\nDigite o id do produto que vai fazer a reposição ou mudança de quantidade do produto no estoque:");
                             scanf("%d", &multiuso);
                             if ((p_PTR = find_produto(multiuso)) != NULL) {
                                 printf("\nproduto encontrado com sucesso.");
@@ -430,7 +433,7 @@ int main() {
                         r.produto = p;
 
                         do {
-                            printf("Digite a quantidade do produto que deseja substituir no estoque");
+                            printf("Digite a quantidade do produto que deseja substituir no estoque:");
                             scanf("%d", &multiuso);
 
                             if (multiuso > 0) break;
@@ -451,13 +454,14 @@ int main() {
                         printf("\nCODIGO INVÀLIDO TENTE NOVAMENTE");
                         break;
                 }
+                        
                 break;
             case 3:
                 printf("\nVOCÊ ESTÁ NO MENU DO FUNCIONÁRIOS.");
                 printf("\nDIGITE:");
                 printf("\n1-PARA CADASTRAR UM FUNCIONÁRIO");
                 printf("\n2-PARA ATUALIZAR UM CADASTRO DE UM FUNCIONÁRIO.");
-                printf("\n3-PARA EXCLUIR UM CADASTRO DE UM FUNCIONÁRIO(necessario o id do produto)");
+                printf("\n3-PARA EXCLUIR UM CADASTRO DE UM FUNCIONÁRIO(NECESSÁRIO o id do funcionario)");
                 printf("\n4-PARA FAZER UMA BUSCA DOS DADOS DE UM FUNCIONARIO(POR ID DO FUNCIONÁRIO)");
                 printf("\n5-PARA FAZER UMA BUSCA DOS DADOS DE UM FUNCIONÁRIO(POR NOME DO FUCIONÁRIO)");
                 scanf("%d", &codigo_funcionario);
@@ -488,7 +492,7 @@ int main() {
 
                     case 3:
                         do {
-                            printf("\ndigite o id do funcionario que deseja excluir.");
+                            printf("\ndigite o id do funcionario que deseja excluir:");
                             scanf("%d", &multiuso);
                             if ((fu_PTR = find_funcionario(multiuso)) != NULL) {
                                 printf("\nFUNCIONARIO ENCONTRADO COM SUCESSO");
@@ -502,9 +506,8 @@ int main() {
                         printf("\nregistro excluido com sucesso");
                         break;
                     case 4:
-
                         do {
-                            printf("\ndigite o id do produto que deseja procurar");
+                            printf("\ndigite o id do funcionario que deseja procurar:");
                             scanf("%d", &multiuso);
 
                             if ((fu_PTR = find_funcionario(multiuso)) != NULL) {
@@ -528,26 +531,23 @@ int main() {
                             }
                         } while (TRUE);
                         imprimindo_funcionario(fu_PTR);
-                        free(fu_PTR);
-                         */
+                        free(fu_PTR); 
+                         */ 
                         break;
                    
                     default:
                         printf("\nCODIGO INVÀLIDO TENTE NOVAMENTE");
                         break;
                        
-                }
+                }           
                 break;
-
-
             case 4:
                 printf("\nVOCÊ ESTÁ NO MENU DE PLANILHAS ELETRONICAS.");
                 printf("\nDIGITE:");
                 printf("\n1-PARA CRIAR UMA TABELA COM OS PRODUTOS MAIS VENDIDOS.");
-                printf("\n2-PARA CRIAR UMA TABELA COM TODAS AS COMPRAS REALIZADAS ATÉ O MOMENTO.");
-                printf("\n3-PARA CRIAR UMA TABELA COM OS PRODUTOS E SUAS QUANTIDADES EM ESTOQUE.");
-                printf("\n4-PARA CRIAR UMA TABELA COM OS FUNCIONÁRIOS QUE MAIS VENDERAM");
-                printf("\n5-PARA CRIAR UMA TABELA COM AS RECEITAS DOS CAIXAS COM OS HORARIOS");
+                printf("\n2-PARA CRIAR UMA TABELA COM OS PRODUTOS E SUAS QUANTIDADES EM ESTOQUE.");
+                printf("\n3-PARA CRIAR UMA TABELA COM OS FUNCIONÁRIOS QUE MAIS VENDERAM");
+                printf("\n4-PARA CRIAR UMA TABELA COM AS RECEITAS DOS CAIXAS COM OS HORARIOS");
                 scanf("%d", &codigo_planilhas);
                 switch (codigo_planilhas){
                     case 1:
@@ -560,29 +560,25 @@ int main() {
                         break;
                         
                     case 2:
-                        co_PTR=get_all_compras();
-                        tamanho_vetor=get_qtd_all_compras();
-                        compras_realizadas(co_PTR,tamanho_vetor,"compras_momento.csv");
-                        free(co_PTR);
-                         printf("\nplanilha gerada no arquivo do programa.");
-                        break;
-                        
-                    case 3:
                         p_PTR=get_all_produtos();
                         tamanho_vetor=get_qtd_all_produtos();
                         produtos_e_estoque(p_PTR,tamanho_vetor,"produtos_estoque.csv");
                         free(p_PTR);
-                         printf("\nplanilha gerada no arquivo do programa.");
+                        printf("\nplanilha gerada no arquivo do programa.");
                         break;
                        
-                    case 4:
+                    case 3:
+                        fu_PTR=get_vendedores_com_mais_vendas();
+                        tamanho_vetor=get_qtd_vendedores_com_mais_vendas();
+                        vetor_PTR=get_qtd_vendas_dos_vendedores_com_mais_vendas();
+                        funcionario_que_mais_venderam(fu_PTR,tamanho_vetor,vetor_PTR,"funcionarios_que_mais_venderam.csv");
                         printf("\nplanilha gerada no arquivo do programa.");
                         break;
                         
-                    case 5:
+                    case 4:
                         t_PTR=get_all_turnos();
                         tamanho_vetor=get_qtd_all_turnos();
-                        receita_dos_caixas(t_PTR,tamanho_vetor,"receita dos caixas");
+                        receita_dos_caixas(t_PTR,tamanho_vetor,"receita_dos_caixas.csv");
                         free(t_PTR);
                          printf("\nplanilha gerada no arquivo do programa.");
                         break;

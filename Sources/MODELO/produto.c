@@ -38,24 +38,14 @@ Produto lendo_produto(){
 		
 	}while(TRUE);	
 	
-	do{
-		printf("\ndigite o preço de compra do produto:");
-		scanf("%f",&p.preco_compra);
+
+	printf("\ndigite o preço de compra do produto:");
+	scanf("%f",&p.preco_compra);
 		
-		if(p.preco_compra>0) break;
-		else printf("\nnúmero invalido tente novamente");
+
+	printf("\ndigite o preço de venda do produto:");
+	scanf("%f",&p.preco_venda);
 		
-	}while(TRUE);
-	
-	do{
-		printf("\ndigite o preço de venda do produto:");
-		scanf("%f",&p.preco_venda);
-		
-		if(p.preco_venda>0) break;
-		else printf("\nnúmero invalido tente novamente");
-		
-	}while(TRUE);	
-	
 	
 	//procurar o id do fornecedor no banco de dados e fornecer para o campo p.f.id e p.f.nome os dados.
 	do{
