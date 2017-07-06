@@ -30,6 +30,33 @@ Funcionario* find_funcionario_nome(const char* nome);
  */
 int get_qtd_find_funcionario_nome(const char* nome);
 
+
+/**
+ * Esta função retorna um ponteiro para os vendedores
+ * que mais vendedores
+ *
+ */
+Funcionario* get_vendedores_com_mais_vendas();
+
+/**
+ * Esta função retorna um ponteiro para a quantidade de vendas
+ * dos vendedores;
+ * 
+ * @return Ponteiro para quantidade de venda dos vendedores;
+ */
+int* get_qtd_vendas_dos_vendedores_com_mais_vendas();
+
+
+/**
+ * Esta função retorna quantos elementos a função get_vendedores_com_mais_vendas
+ * retorna
+ *
+ * Retorno - retorna a quantidade de registros da função get_vendedores_com_mais_vendas.
+ *
+ * Erro - retorna -1 em caso de erro.
+ */
+int get_qtd_vendedores_com_mais_vendas();
+
 /**
  * Esta função retorna um ponteiro para todos os 
  * funcionarios cadastrados no banco de dados.

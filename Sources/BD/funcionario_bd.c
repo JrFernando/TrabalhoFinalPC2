@@ -40,8 +40,8 @@ Funcionario* find_funcionario(int id) {
 
     if ((resposta = mysql_store_result(&mysql))) {
         linhas = mysql_fetch_row(resposta);
-        if(linhas == NULL) return NULL;
-        
+        if (linhas == NULL) return NULL;
+
         funcionario = (Funcionario*) alocar_memoria(1, sizeof (Funcionario));
         funcionario->id = atoi(linhas[0]);
 
@@ -152,7 +152,114 @@ int get_qtd_find_funcionario_nome(const char* nome) {
 
     return quantidade;
 }
- 
+
+Funcionario* get_vendedores_com_mais_vendas() {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    MYSQL_ROW linhas;
+    char *query = "select func_id from Funcionarios inner join Compras on func_id = comp_func_id group by func_id order by count(func_id) desc;";
+    Funcionario *funcionarios, *temp;
+    Grupo *grupo;
+    int quantidade, id_grupo;
+
+    if (!bd_open(&mysql)) return NULL;
+
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+    if ((resposta = mysql_store_result(&mysql))) {
+        quantidade = mysql_num_rows(resposta);
+
+        funcionarios = (Funcionario*) alocar_memoria(quantidade, sizeof (Funcionario));
+        temp = funcionarios;
+        while ((linhas = mysql_fetch_row(resposta)) != NULL) {
+
+            *(temp) = *(find_funcionario(atoi(linhas[0])));
+
+            temp++;
+        }
+
+    } else {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+    mysql_free_result(resposta);
+    bd_close(&mysql);
+
+    return funcionarios;
+}
+
+int* get_qtd_vendas_dos_vendedores_com_mais_vendas() {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    MYSQL_ROW linhas;
+    char *query = "select count(func_id) from Funcionarios inner join Compras on func_id = comp_func_id group by func_id order by count(func_id) desc;";
+    int *vendas, *temp;
+    int quantidade, id_grupo;
+
+    if (!bd_open(&mysql)) return NULL;
+
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+    if ((resposta = mysql_store_result(&mysql))) {
+        quantidade = mysql_num_rows(resposta);
+
+        vendas = (int*) alocar_memoria(quantidade, sizeof (int));
+        temp = vendas;
+        while ((linhas = mysql_fetch_row(resposta)) != NULL) {
+
+            *(temp) = atoi(linhas[0]);
+
+            temp++;
+        }
+
+    } else {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+    mysql_free_result(resposta);
+    bd_close(&mysql);
+
+    return vendas;
+}
+
+int get_qtd_vendedores_com_mais_vendas() {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    char *query = "select func_id from Funcionarios inner join Compras on func_id = comp_func_id group by func_id order by count(func_id) desc;";
+    int quantidade = -1;
+
+    if (!bd_open(&mysql)) return -1;
+
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return -1;
+    }
+
+    if ((resposta = mysql_store_result(&mysql))) quantidade = mysql_num_rows(resposta);
+
+    mysql_free_result(resposta);
+    bd_close(&mysql);
+
+    return quantidade;
+}
 
 Funcionario* get_all_funcionarios() {
     MYSQL mysql;
@@ -294,7 +401,7 @@ bool delete_funcionario(const Funcionario funcionario) {
         return TRUE;
     } else {
         //Descomente para debugar
-        //printf("Erro: %s\n", mysql_error(&mysql));
+        printf("Erro: %s\n", mysql_error(&mysql));
         bd_close(&mysql);
         return FALSE;
     }
