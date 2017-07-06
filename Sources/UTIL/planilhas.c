@@ -26,7 +26,7 @@ void produtos_mais_vendidos(Produto *vetor,int tamanho_vetor,int *p_vendidos,cha
 	fclose(file_PTR);
 }
 
-void produtos_mais_lucrativos(Produto *vetor,int tamanho_vetor,float *p_vendas,char *nome_arquivo){
+/*void produtos_mais_lucrativos(Produto *vetor,int tamanho_vetor,float *p_vendas,char *nome_arquivo){
 	int i;
 	FILE* file_PTR;
 	
@@ -46,8 +46,10 @@ void produtos_mais_lucrativos(Produto *vetor,int tamanho_vetor,float *p_vendas,c
 	//fechando arquivo:
 	fclose(file_PTR);
 }
+*/
 
-void produtos_e_estoque(Produto *vetor,int tamanho_vetor,char *nome_arquivo){
+
+ void produtos_e_estoque(Produto *vetor,int tamanho_vetor,char *nome_arquivo){
 	int i;
 	FILE* file_PTR;
 	
