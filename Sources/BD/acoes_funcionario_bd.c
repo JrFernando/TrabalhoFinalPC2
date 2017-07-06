@@ -50,7 +50,7 @@ Compra* find_compra(const int id) {
             compra->produto[i] = *(find_produto(atoi(linhas[2])));
             compra->quantidade[i] = atoi(linhas[3]);
             compra->horario = string_bd_to_tm(linhas[4]);
-            if(atoi(linhas[5]) != 0) compra->vendedor = *(find_funcionario(atoi(linhas[5])));
+            if (atoi(linhas[5]) != 0) compra->vendedor = *(find_funcionario(atoi(linhas[5])));
         }
     } else {
         //Descomente para debugar
@@ -233,7 +233,7 @@ Compra* find_compra_por_vendedor(const int id_vendedor) {
         return NULL;
     }
 
-    quantidade = get_qtd_all_compras();
+    quantidade = get_qtd_compra_por_vendedor(id_vendedor);
     compras = alocar_memoria(quantidade, sizeof (Compra));
     if ((resposta = mysql_store_result(&mysql))) {
         for (i = 0; (linhas = mysql_fetch_row(resposta)) != NULL; i++) {
@@ -286,9 +286,8 @@ Compra* get_all_compras() {
     MYSQL_RES *resposta;
     MYSQL_ROW linhas;
     char *query = "select comp_id from Compras group by comp_id;";
-    Compra *compras, *temp;
+    Compra *compras;
     int quantidade, i;
-
 
     if (!bd_open(&mysql)) return NULL;
 
@@ -300,7 +299,7 @@ Compra* get_all_compras() {
     }
 
     quantidade = get_qtd_all_compras();
-    compras = alocar_memoria(quantidade, sizeof (Compra));
+    compras = (Compra*) alocar_memoria(quantidade, sizeof (Compra));
     if ((resposta = mysql_store_result(&mysql))) {
         for (i = 0; (linhas = mysql_fetch_row(resposta)) != NULL; i++) {
             *(compras + i) = *(find_compra(atoi(linhas[0])));
