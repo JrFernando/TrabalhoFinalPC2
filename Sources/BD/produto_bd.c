@@ -343,7 +343,7 @@ Produto* get_all_produtos() {
     MYSQL mysql;
     MYSQL_RES *resposta;
     MYSQL_ROW linhas;
-    char *query = "select * from Produtos;";
+    char *query = "select * from Produtos order by prod_quantidade desc;";
     Produto *produtos, *temp;
     int quantidade;
 
