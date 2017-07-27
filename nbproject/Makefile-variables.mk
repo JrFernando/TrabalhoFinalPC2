@@ -8,20 +8,20 @@ CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
-CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=trabalhofinalpc2-master
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/trabalhofinalpc2-master
+CND_ARTIFACT_DIR_Debug=
+CND_ARTIFACT_NAME_Debug=scce
+CND_ARTIFACT_PATH_Debug=scce
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=trabalhofinalpc2-master.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/trabalhofinalpc2-master.tar
+CND_PACKAGE_NAME_Debug=trabalhofinalpc2.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/trabalhofinalpc2.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=trabalhofinalpc2-master
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/trabalhofinalpc2-master
+CND_ARTIFACT_NAME_Release=trabalhofinalpc2
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/trabalhofinalpc2
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=trabalhofinalpc2-master.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/trabalhofinalpc2-master.tar
+CND_PACKAGE_NAME_Release=trabalhofinalpc2.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/trabalhofinalpc2.tar
 #
 # include compiler specific variables
 #

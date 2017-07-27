@@ -80,7 +80,7 @@ void formatacao_nota_fiscal3(char *nome_arquivo,float qtd_total,float valor_tota
 	fprintf(file_PTR,"OBRIGADO PELA PREFERENCIA\n");
 	fprintf(file_PTR,"VOLTE SEMPRE\n");
 	fprintf(file_PTR,"----------------------------------------------------------------------\n");
-	fprintf(file_PTR,"Itaucusys Brasil Ltda\n");
+	fprintf(file_PTR,"Itauçusys Brasil Ltda\n");
         fprintf(file_PTR,"----------------------------------------------------------------------\n");
 	fprintf(file_PTR,"Op:%d\n",codigo_operador);
 	fprintf(file_PTR,"Operador:%s        %s %s",nome_operador,gerando_data_cupom(),gerando_horario_cupom());

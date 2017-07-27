@@ -12,8 +12,8 @@
 #include "../UTIL/my_bool.h" //Para utilizar o tipo bool
 
 #define HOST "localhost"
-#define USER "root"
-#define PASSWORD "123"
+#define USER "scce"
+#define PASSWORD "1234"
 #define DATABASE "SCCE"
 
 /**

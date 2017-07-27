@@ -381,6 +381,8 @@ int get_last_id_compra() {
     char *query = "select max(comp_id) from Compras;";
     int id_max;
 
+    if(get_qtd_all_compras() == 0) return 0;
+
 
     if (!bd_open(&mysql)) return -1;
 

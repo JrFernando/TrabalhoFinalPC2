@@ -67,6 +67,92 @@ Funcionario* find_funcionario(int id) {
     return funcionario;
 }
 
+Funcionario* find_funcionario_nome(const char* nome) {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    MYSQL_ROW linhas;
+    char *query = "select * from Funcionarios where func_nome like \" %%\";";
+    Funcionario *funcionarios, *temp;
+    Grupo *grupo;
+    int quantidade, id_grupo, tamanho;
+
+    tamanho = strlen(query) + strlen(nome);
+    query = (char*) alocar_memoria(tamanho, sizeof (char));
+
+    sprintf(query, "select * from Funcionarios where func_nome like \"%s%%\";", nome);
+
+    if (!bd_open(&mysql)) return NULL;
+
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+    if ((resposta = mysql_store_result(&mysql))) {
+        quantidade = mysql_num_rows(resposta);
+
+        funcionarios = (Funcionario*) alocar_memoria(quantidade, sizeof (Funcionario));
+
+        temp = funcionarios;
+        while ((linhas = mysql_fetch_row(resposta)) != NULL) {
+            temp->id = atoi(linhas[0]);
+
+            temp->nome = (char*) alocar_memoria(strlen(linhas[1]), sizeof (char));
+            strcpy(temp->nome, linhas[1]);
+
+            temp->salario = atof(linhas[3]);
+
+            id_grupo = atoi(linhas[4]);
+            grupo = find_grupo(id_grupo);
+            temp->grupo = *grupo;
+
+            temp++;
+        }
+
+    } else {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return NULL;
+    }
+
+    mysql_free_result(resposta);
+    bd_close(&mysql);
+
+    return funcionarios;
+}
+
+int get_qtd_find_funcionario_nome(const char* nome) {
+    MYSQL mysql;
+    MYSQL_RES *resposta;
+    char *query = "select * from Funcionarios where func_nome like \"%%\";";
+    int quantidade = -1, tamanho;
+
+    tamanho = strlen(query) + strlen(nome);
+    query = (char*) alocar_memoria(tamanho, sizeof (char));
+
+    sprintf(query, "select * from Funcionarios where func_nome like \"%s%%\";", nome);
+
+    if (!bd_open(&mysql)) return -1;
+
+    if (mysql_query(&mysql, query)) {
+        //Descomente para debugar
+        //printf("Erro: %s\n", mysql_error(&mysql));
+        bd_close(&mysql);
+        return -1;
+    }
+
+    if ((resposta = mysql_store_result(&mysql))) quantidade = mysql_num_rows(resposta);
+
+    mysql_free_result(resposta);
+    bd_close(&mysql);
+
+    return quantidade;
+    return quantidade;
+}
+
 Funcionario* get_vendedores_com_mais_vendas() {
     MYSQL mysql;
     MYSQL_RES *resposta;

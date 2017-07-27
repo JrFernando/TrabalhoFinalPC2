@@ -122,6 +122,7 @@
           <commandLine>-lmysqlclient</commandLine>
         </cTool>
         <linkerTool>
+          <output>scce</output>
           <commandLine>-lmysqlclient</commandLine>
         </linkerTool>
       </compileType>

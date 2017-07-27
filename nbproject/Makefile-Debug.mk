@@ -74,11 +74,10 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2-master
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk scce
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2-master: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trabalhofinalpc2-master ${OBJECTFILES} ${LDLIBSOPTIONS} -lmysqlclient
+scce: ${OBJECTFILES}
+	${LINK.c} -o scce ${OBJECTFILES} ${LDLIBSOPTIONS} -lmysqlclient
 
 ${OBJECTDIR}/Sources/BD/acoes_funcionario_bd.o: Sources/BD/acoes_funcionario_bd.c
 	${MKDIR} -p ${OBJECTDIR}/Sources/BD

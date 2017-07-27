@@ -364,7 +364,7 @@ int main() {
                         break;
 
                     case 5:
-                        /*
+                        
                         do {
                             printf("\ndigite o nome do produto que deseja procurar:");
                             scanf("\n%[^\n]s", procura);
@@ -377,7 +377,7 @@ int main() {
                         imprimindo_produto(p_PTR);
                         free(p_PTR);
                         break;
-                       */ 
+                        
                     case 6:
                         do {
                             printf("\ndigite o id do produto que deseja procurar ou ou digite 0-para retornar ao menu inicial:");
@@ -520,7 +520,7 @@ int main() {
                         break;
 
                     case 5:
-                        /*
+                        
                         do {
                             printf("\ndigite o nome do funcionario que deseja procurar:");
                             scanf("\n%[^\n]s", procura);
@@ -532,7 +532,7 @@ int main() {
                         } while (TRUE);
                         imprimindo_funcionario(fu_PTR);
                         free(fu_PTR); 
-                         */ 
+                         
                         break;
                    
                     default:

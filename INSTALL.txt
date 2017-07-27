@@ -1,0 +1,71 @@
+|==========================================================================|
+|============================== DEPENDÊCNIAS ==============================|
+|==========================================================================|
+
+Nosso software funciona com o servidor MySQL. Para total funcionamento do
+software e fundamental a instalação do servidor MySQL. Para isso basta 
+utilizar o gerenciador de pacotes de sua preferência e baixar os pacotes
+mysql-server mysql-client. Abaixo segue exemplo usando o apt:
+	Ex. # apt install mysql-server mysql-client
+
+BIBLIOTECAS EXTERNAS:
+
+Biblioteca do MySQL: libmysqlclient-dev
+Para instalar, basta utlizar o gerenciador de pacotes de sua preferência,
+abaixo segue um exemplo utilizando o apt:
+	Ex. # apt install libmysqlclient-dev
+
+Biblioteca libncurses5-dev:
+Para instalar, basta utlizar o gerenciador de pacotes de sua preferência,
+abaixo segue um exemplo utilizando o apt:
+	Ex. # apt install libncurses5-dev
+
+Biblioteca build-essential:
+Para instalar, basta utlizar o gerenciador de pacotes de sua preferência,
+abaixo segue um exemplo utilizando o apt:
+	Ex. # apt install build-essential
+	
+Todas instalações devem ser feitas com super usuário.
+
+|==========================================================================|
+|==================== IMPORTANTO O BANCO DE DADOS =========================|
+|==========================================================================|
+
+Copiar o arquivo contindo em Documentos/Modelagem/sript_bd_v1.0.sql para 
+sua pasta home para facilitar na hora de importar para o BD ou deve-se
+utlizar todo o caminho onde o arquivo se encontra.
+
+Entrar no mysql com o usário root:
+	Ex: mysql -u root -p
+Digitar a senha do root que foi criada durante a instação do mysql-server.
+Ao entrar no mysql-server, se você moveu o arquivo script_bd_v1.0.sql para 
+sua home basta executar o comando abaixo: 
+	source /home/<seu-usuario>/script_bd_v1.0.sql
+Obs. substituit <seu-usuario> pelo nome do seu usuário.
+Caso não tenha movido o arquivo script_bd_v1.0.sql para a home terá que 
+digitar todo o caminho, como no exemplo abaixo:
+	Ex. source /home/user/Documentos/Modelagem/script_bd_v1.0.sql
+Lembrando, deve digitar o caminho onde o arquivo está localizado na máquina.
+Para sair do mysql-server basta utlizar o comando:
+	exit
+	
+|==========================================================================|
+|========================== COMPILANDO O SOFTWARE =========================|
+|==========================================================================|
+
+Para compilar basta voltar para a do programa utilizando terminal e 
+executar o seguinte comando:
+	$ make
+Quando a execução terminar estará tudo compilado.
+
+|==========================================================================|
+|========================== INICIANDO O SOFTWARE ==========================|
+|==========================================================================|
+
+Os passos mostrados acima não devem ser repetidos posteiriormente, pois
+devem ser feitos apenas para preparar o ambiante para o software funcionar
+sem maiores problemas.
+O único comando que irá se repetir, é o comando para iniciar o software,
+usado sempre que deseja executar o programa. Para executar o programa
+utiliza-se o seguinte comando:
+	& ./scce 
